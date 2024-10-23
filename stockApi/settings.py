@@ -24,7 +24,7 @@ SECRET_KEY = "django-insecure-w##)7-bapjl@1vpsauzj291_5#!=!#5nqx6lspel8_$th^r*u$
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -80,13 +80,22 @@ WSGI_APPLICATION = "stockApi.wsgi.application"
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.mysql",
-        "NAME": "django_stock_api",
-        "USER": "root",
-        "PASSWORD": "19861023Xjl_",
-        "PORT": 3306,
-        "HOST": "168.138.5.55",
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'stock_api',
+        'USER': 'root',
+        'PASSWORD': '19861023Xjl_',
+        'HOST': '168.138.5.55',
+        'PORT': '3306',
+        'OPTIONS': {
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+            'connect_timeout': 20,
+            'read_timeout': 60,
+            'write_timeout': 60,
+            'ssl': {
+                'verify_server_cert': False,
+            },
+        },
     }
 }
 
@@ -131,3 +140,6 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # 允许所有用户跨域访问
 CORS_ORIGIN_ALLOW_ALL = True
+
+# 指定自定义的用户模型
+AUTH_USER_MODEL = 'users.User'
