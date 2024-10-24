@@ -20,9 +20,10 @@ class LoginView(TokenObtainPairView):
 
         # 自定义登陆成功后返回的数据信息
         result = serializer.validated_data
-        result['email'] = serializer.user.email
         result['id'] = serializer.user.id
         result['username'] = serializer.user.username
+        result['email'] = serializer.user.email
+        result['mobile'] = serializer.user.mobile
         # 将access名称改为token
         result['token'] = result.pop('access')
 

@@ -211,3 +211,10 @@ SIMPLE_JWT = {
     # 用于刷新滑动令牌的序列化器。
     "SLIDING_TOKEN_REFRESH_SERIALIZER": "rest_framework_simplejwt.serializers.TokenRefreshSlidingSerializer",
 }
+
+# 使用自定义的认证类进行登录(登录是验证用户信息)
+AUTHENTICATION_BACKENDS = [
+    'common.authenticate.MyBackend'
+]
+
+
