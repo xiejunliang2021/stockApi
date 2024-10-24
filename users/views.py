@@ -32,6 +32,7 @@ class LoginView(TokenObtainPairView):
 
 class RegistrationView(ViewSet):
     """ 注册视图 如果使用ViewSet的话直接写create方法"""
+
     def create(self, request):
         pass
 
@@ -46,6 +47,7 @@ class RegistrView(APIView):
         email = request.data.get('email')
         password = request.data.get('password')
         password_confirmation = request.data.get('password_confirmation')
+        mobile = request.data.get('mobile')
         # 校验参数是否为空
         if not username:
             return Response({'status_code': 422, 'errors': '用户名不能为空'}, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
@@ -61,7 +63,8 @@ class RegistrView(APIView):
 
         # 校验用户名是否存在
         if User.objects.filter(username=username).exists():
-            return Response({'status_code': 422, 'message': '注册失败', 'errors': '用户已存在'}, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
+            return Response({'status_code': 422, 'message': '注册失败', 'errors': '用户已存在'},
+                            status=status.HTTP_422_UNPROCESSABLE_ENTITY)
 
         # 校验两次密码是否一致
         if password != password_confirmation:
@@ -69,13 +72,19 @@ class RegistrView(APIView):
                             status=status.HTTP_422_UNPROCESSABLE_ENTITY)
 
         # 校验密码长度
-        if not(6 <= len(password) <= 18):
+        if not (6 <= len(password) <= 18):
             return Response({'status_code': 422, 'message': '注册失败', 'errors': '密码的长度需要在6到18位之间'},
                             status=status.HTTP_422_UNPROCESSABLE_ENTITY)
 
         # 校验邮箱是否存在
         if User.objects.filter(email=email).exists():
-            return Response({'status_code': 422, 'message': '注册失败', 'errors': '邮箱已使用'}, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
+            return Response({'status_code': 422, 'message': '注册失败', 'errors': '邮箱已使用'},
+                            status=status.HTTP_422_UNPROCESSABLE_ENTITY)
+
+        # 校验手机号码是否存在
+        if not mobile or len(mobile) != 11:
+            return Response({'status_code': 422, 'message': '注册失败', 'errors': '手机号码未填写或者手机号码位数不对'},
+                            status=status.HTTP_422_UNPROCESSABLE_ENTITY)
 
         # 校验邮箱是否符合邮箱格式
         if not re.match(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$', email):
@@ -83,26 +92,12 @@ class RegistrView(APIView):
                             status=status.HTTP_422_UNPROCESSABLE_ENTITY)
 
         # 创建用户
-        obj = User.objects.create_user(username=username, password=password, email=email)
+        obj = User.objects.create_user(username=username, password=password, email=email, mobile=mobile)
         res = {
-            'username': username,
             'id': obj.id,
-            'email': obj.email
+            'username': username,
+            'email': obj.email,
+            'mobile': mobile
         }
 
         return Response(res, status=status.HTTP_201_CREATED)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
