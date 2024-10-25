@@ -1,13 +1,14 @@
 import re
 
 from django.shortcuts import render
-from rest_framework import status
+from rest_framework import status, mixins
 from rest_framework.response import Response
 from rest_framework_simplejwt.exceptions import TokenError, InvalidToken
 from rest_framework_simplejwt.views import TokenObtainPairView
-from rest_framework.viewsets import ViewSet
+from rest_framework.viewsets import ViewSet, GenericViewSet
 from rest_framework.views import APIView
 from .models import User
+from .serializers import UserSerializer
 
 
 class LoginView(TokenObtainPairView):
@@ -101,3 +102,27 @@ class RegistrView(APIView):
         }
 
         return Response(res, status=status.HTTP_201_CREATED)
+
+
+class UserView(GenericViewSet, mixins.RetrieveModelMixin):
+    """
+        用户相关操作的视图 ，
+        由于我们不需要增删改查太多的功能，所以我们值继承了mixins中的获取单个用户信息的功能
+    """
+    # 获取用户的信息
+    queryset = User.objects.all()
+    # 指定序列化器
+    serializer_class = UserSerializer
+
+
+
+
+
+
+
+
+
+
+
+
+
