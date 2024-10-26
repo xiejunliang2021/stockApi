@@ -16,6 +16,10 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ['id', 'username', 'email', 'mobile', 'avatar', 'last_name']
+        # 下面的参数是只对数据进行序列化（只读），还有write_only，只对数据进行反序列化（只写）
+        # extra_kwargs = {
+        #     'id': {'read_only': True}
+        # }
 
 
 

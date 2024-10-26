@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     "rest_framework",
     # 解决跨域问题
     "corsheaders",
+    # 权限校验
+    'permission',
     "basic",
     "tactics",
     "users",
@@ -146,13 +148,12 @@ AUTH_USER_MODEL = 'users.User'
 # DRF配置鉴权方式
 REST_FRAMEWORK = {
     # 配置登录鉴权方式
-    'DEFAULT_AUTHENTCATION_CLASSES': (
+    'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
         'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.BasicAuthentication',
     ),
 }
-
 
 SIMPLE_JWT = {
     # 对于大部分情况，设置以下两项就可以了，以下为默认配置项目，可根据需要进行调整
@@ -214,7 +215,10 @@ SIMPLE_JWT = {
 
 # 使用自定义的认证类进行登录(登录是验证用户信息)
 AUTHENTICATION_BACKENDS = [
-    'common.authenticate.MyBackend'
+    'common.authenticate.MyBackend',
+    'permission.backends.PermissionBackend',
 ]
 
+PERMISSION_CHECK_AUTHENTICATION_BACKENDS = False
+PERMISSION_CHECK_TEMPLATES_OPTIONS_BUILTINS = False
 

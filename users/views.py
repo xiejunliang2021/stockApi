@@ -1,5 +1,4 @@
 import re
-
 from django.shortcuts import render
 from rest_framework import status, mixins
 from rest_framework.response import Response
@@ -9,6 +8,8 @@ from rest_framework.viewsets import ViewSet, GenericViewSet
 from rest_framework.views import APIView
 from .models import User
 from .serializers import UserSerializer
+from rest_framework.permissions import IsAuthenticated
+from common.permissions import UserPermissions
 
 
 class LoginView(TokenObtainPairView):
@@ -113,6 +114,8 @@ class UserView(GenericViewSet, mixins.RetrieveModelMixin):
     queryset = User.objects.all()
     # 指定序列化器
     serializer_class = UserSerializer
+    # 权限认证(设置认证用户才能查看当前信息）
+    permission_classes = [IsAuthenticated, UserPermissions]
 
 
 
