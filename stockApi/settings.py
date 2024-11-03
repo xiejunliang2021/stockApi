@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     "corsheaders",
     # 权限校验
     'permission',
+    # 过滤器
+    'django_filters',
     "basic",
     "tactics",
     "users",
@@ -153,6 +155,8 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.BasicAuthentication',
     ),
+    # 配置过滤器
+    'DEFAULT_FILTER_BACKENDS': ('django_filters.rest_framework.DjangoFilterBackend',),
 }
 
 SIMPLE_JWT = {
@@ -221,4 +225,3 @@ AUTHENTICATION_BACKENDS = [
 
 PERMISSION_CHECK_AUTHENTICATION_BACKENDS = False
 PERMISSION_CHECK_TEMPLATES_OPTIONS_BUILTINS = False
-

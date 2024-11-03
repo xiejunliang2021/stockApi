@@ -1,5 +1,7 @@
 from django.db import models
 # 导入公共模型类
+from django.utils import timezone
+import datetime
 from common.db import BaseModel
 # django中自带的用户认证模型
 from django.contrib.auth.models import AbstractUser
@@ -52,3 +54,21 @@ class AuthCode(models.Model):
     class Meta:
         db_table = 'authcode'
         verbose_name = '手机验证码表'
+
+
+class TestStatic(models.Model):
+    """测试策略表"""
+    stop_profit = models.DecimalField(verbose_name='止盈点位', max_digits=5, decimal_places=2, default=7.0)
+    # 设置默认为当前日期，并且日期可以修改
+    date = models.DateField(verbose_name='获取策略的日期', default=timezone.now)
+    buy_01 = models.DecimalField(verbose_name='止盈点一', decimal_places=2, max_digits=6, default=0)
+    buy_02 = models.DecimalField(verbose_name='止盈点二', decimal_places=2, max_digits=6, default=0)
+    loss = models.DecimalField(verbose_name='止损点', decimal_places=2, max_digits=6, default=0)
+    code = models.CharField(verbose_name='股票代码', max_length=11)
+    name = models.CharField(verbose_name='股票名称', max_length=12)
+
+    class Meta:
+        db_table = 'test_static'
+        verbose_name = '股票策略测试表'
+
+

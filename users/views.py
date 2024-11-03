@@ -6,10 +6,10 @@ from rest_framework_simplejwt.exceptions import TokenError, InvalidToken
 from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework.viewsets import ViewSet, GenericViewSet
 from rest_framework.views import APIView
-from .models import User
-from .serializers import UserSerializer
+from .models import User, Addr, TestStatic
+from .serializers import UserSerializer, AddrSerializer
 from rest_framework.permissions import IsAuthenticated
-from common.permissions import UserPermissions
+from common.permissions import UserPermissions, AddrPermissions
 
 
 class LoginView(TokenObtainPairView):
@@ -117,15 +117,61 @@ class UserView(GenericViewSet, mixins.RetrieveModelMixin):
     # 权限认证(设置认证用户才能查看当前信息）
     permission_classes = [IsAuthenticated, UserPermissions]
 
+    def upload_avatar(self, request, *args, **kwargs):
+        """ 用户上传头像"""
+
+        return Response({'url': '头像上传成功'})
 
 
+class AddrView(GenericViewSet,
+               mixins.CreateModelMixin,
+               mixins.UpdateModelMixin,
+               mixins.ListModelMixin,
+               mixins.DestroyModelMixin):
+    queryset = Addr.objects.all()
+    serializer_class = AddrSerializer
+    # 设置认证用户才能登录
+    permission_classes = [IsAuthenticated, AddrPermissions]
+    # 指定过滤器字段
+    filterset_fields = ('user',)
 
 
+class StaticView(APIView):
+    """ 策略视图 """
 
+    def post(self, request):
+        """注册接口"""
+        # 接收用户参数
+        stop_profit = request.data.get('stop_profit')
+        date = request.data.get('date')
 
+        # 校验参数是否为空
+        if not stop_profit:
+            return Response({'status_code': 422, 'errors': '止盈涨幅不能为空'}, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
 
+        if not date:
+            return Response({'status_code': 422, 'errors': '日期不能为空'}, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
 
+        buy_01 = 888.88
+        buy_02 = 999.99
+        code = 'sh601618'
+        name = '中国中冶'
+        loss = 666
 
+        # 创建用户
+        obj = TestStatic.objects.create(stop_profit=stop_profit, date=date, buy_01=buy_01, buy_02=buy_02,
+                                        code=code,
+                                        name=name, loss=loss)
+        res = {
+            'id': obj.id,
+            'stop_profit': obj.stop_profit,
+            'date': obj.date,
+            'buy_01': obj.buy_01,
+            'buy_02': obj.buy_02,
+            'loss': obj.loss,
+            'code': obj.code,
+            'name': obj.name,
 
+        }
 
-
+        return Response(res, status=status.HTTP_201_CREATED)

@@ -8,7 +8,7 @@
 '''
 
 from rest_framework import serializers
-from .models import User
+from .models import User, Addr
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -20,6 +20,13 @@ class UserSerializer(serializers.ModelSerializer):
         # extra_kwargs = {
         #     'id': {'read_only': True}
         # }
+
+
+class AddrSerializer(serializers.ModelSerializer):
+    """ 用户地址模型序列化器"""
+    class Meta:
+        model = Addr
+        fields = '__all__'
 
 
 
