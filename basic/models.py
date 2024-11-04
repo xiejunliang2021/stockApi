@@ -9,10 +9,10 @@ class StockBasic(models.Model):
     symbol = models.CharField(max_length=10, verbose_name='股票代码')
     name = models.CharField(max_length=20, verbose_name='股票名称')
     area = models.CharField(max_length=20, verbose_name='地区', null=True, blank=True)
-    market = models.CharField(max_length=20, verbose_name='市场类别', default='1')
-    list_status = models.CharField(max_length=5, verbose_name='上市状态', default='L')
-    exchange = models.CharField(max_length=20, verbose_name='交易所')
-    industry = models.CharField(max_length=20, verbose_name='所属行业', default='1')
+    market = models.CharField(max_length=20, verbose_name='市场类别', null=True, blank=True)
+    list_status = models.CharField(max_length=5, verbose_name='上市状态', null=True, blank=True)
+    exchange = models.CharField(max_length=20, verbose_name='交易所', null=True, blank=True)
+    industry = models.CharField(max_length=20, verbose_name='所属行业', null=True, blank=True)
     list_date = models.CharField(max_length=20, verbose_name='上市日期')
 
     class Meta:
