@@ -8,13 +8,12 @@ class StockBasic(models.Model):
     ts_code = models.CharField(max_length=10, verbose_name='ts代码')
     symbol = models.CharField(max_length=10, verbose_name='股票代码')
     name = models.CharField(max_length=20, verbose_name='股票名称')
-    area = models.CharField(max_length=20, verbose_name='地区')
-    market = models.CharField(max_length=20, verbose_name='市场类别')
+    area = models.CharField(max_length=20, verbose_name='地区', null=True, blank=True)
+    market = models.CharField(max_length=20, verbose_name='市场类别', default='1')
     list_status = models.CharField(max_length=5, verbose_name='上市状态', default='L')
     exchange = models.CharField(max_length=20, verbose_name='交易所')
-    industry = models.CharField(max_length=20, verbose_name='所属行业')
+    industry = models.CharField(max_length=20, verbose_name='所属行业', default='1')
     list_date = models.CharField(max_length=20, verbose_name='上市日期')
-    delist_date = models.CharField(max_length=20, verbose_name='退市日期')
 
     class Meta:
         db_table = 'code'
