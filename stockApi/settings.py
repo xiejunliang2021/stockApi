@@ -50,6 +50,8 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    # 支持跨域请求
+    "corsheaders.middleware.CorsMiddleware",    
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -57,8 +59,6 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    # 支持跨域请求
-    "corsheaders.middleware.CorsMiddleware",
 ]
 
 ROOT_URLCONF = "stockApi.urls"
@@ -143,7 +143,13 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # 允许所有用户跨域访问
 CORS_ORIGIN_ALLOW_ALL = True
+# 允许的跨域来源
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5173",  # 你的前端地址
+]
 
+# 如果需要支持带有凭证的请求
+CORS_ALLOW_CREDENTIALS = True
 # 指定自定义的用户模型
 AUTH_USER_MODEL = 'users.User'
 
