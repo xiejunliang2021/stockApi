@@ -25,10 +25,10 @@ class StockBasic(models.Model):
 
 
 class TradeCal(models.Model):
-    exchange = models.CharField(max_length=6, verbose_name='交易所')
+    exchange = models.CharField(max_length=10, verbose_name='交易所')
     cal_date = models.CharField(max_length=20, verbose_name='日历日期')
-    is_open = models.CharField(max_length=6, verbose_name='是否交易')
-    pretrade_date = models.CharField(max_length=6, verbose_name='上一个交易日')
+    is_open = models.CharField(max_length=10, verbose_name='是否交易')
+    pretrade_date = models.CharField(max_length=10, verbose_name='上一个交易日')
 
     class Meta:
         db_table = 'trade_cal'

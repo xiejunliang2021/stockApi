@@ -1,0 +1,1179 @@
+*** Starting uWSGI 2.0.21 (64bit) on [Sat Nov  9 12:43:58 2024] ***
+compiled with version: 11.2.0 on 05 August 2024 19:33:33
+os: Linux-5.15.0-1063-oracle #69~20.04.1-Ubuntu SMP Sat Jun 29 02:22:36 UTC 2024
+nodename: mlb-vps
+machine: aarch64
+clock source: unix
+pcre jit disabled
+detected number of CPU cores: 2
+current working directory: /home/ubuntu/stockApi
+writing pidfile to /home/ubuntu/stockApi/uwsgi.pid
+detected binary path: /home/ubuntu/miniconda3/envs/django/bin/uwsgi
+chdir() to /home/ubuntu/stockApi
+your processes number limit is 47244
+your memory page size is 4096 bytes
+ *** WARNING: you have enabled harakiri without post buffering. Slow upload could be rejected on post-unbuffered webservers *** 
+detected max file descriptor number: 1024
+building mime-types dictionary from file /etc/mime.types...567 entry found
+lock engine: pthread robust mutexes
+thunder lock: enabled
+uWSGI http bound on 0.0.0.0:8000 fd 7
+uwsgi socket 0 bound to TCP address 127.0.0.1:36445 (port auto-assigned) fd 6
+Python version: 3.9.19 (main, May  6 2024, 19:46:57)  [GCC 11.2.0]
+Python main interpreter initialized at 0x1aafa960
+python threads support enabled
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 703600 bytes (687 KB) for 8 cores
+*** Operational MODE: preforking+threaded ***
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI master process (pid: 402479)
+spawned uWSGI worker 1 (pid: 402480, cores: 2)
+spawned uWSGI worker 2 (pid: 402481, cores: 2)
+spawned uWSGI worker 3 (pid: 402482, cores: 2)
+spawned uWSGI worker 4 (pid: 402483, cores: 2)
+spawned uWSGI http 1 (pid: 402484)
+Python auto-reloader enabled
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x1aafa960 pid: 402482 (default app)
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x1aafa960 pid: 402481 (default app)
+mountpoint  already configured. skip.
+mountpoint  already configured. skip.
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x1aafa960 pid: 402483 (default app)
+mountpoint  already configured. skip.
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x1aafa960 pid: 402480 (default app)
+mountpoint  already configured. skip.
+[pid: 402481|app: 0|req: 1/1] 207.211.146.175 () {38 vars in 516 bytes} [Sat Nov  9 20:44:31 2024] POST /api/users/login/ => generated 570 bytes in 794 msecs (HTTP/1.1 200) 8 headers in 243 bytes (1 switches on core 0)
+[pid: 402483|app: 0|req: 1/2] 207.211.146.175 () {42 vars in 707 bytes} [Sat Nov  9 20:44:45 2024] POST /api/users/login/ => generated 570 bytes in 675 msecs (HTTP/1.1 200) 10 headers in 335 bytes (1 switches on core 0)
+Not Found: /example.com:443
+[pid: 402482|app: 0|req: 1/3] 154.213.184.18 () {26 vars in 316 bytes} [Sat Nov  9 21:15:04 2024] CONNECT example.com:443 => generated 1795 bytes in 641 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /
+[pid: 402480|app: 0|req: 1/4] 147.185.132.91 () {28 vars in 297 bytes} [Sat Nov  9 21:48:37 2024] GET / => generated 2285 bytes in 706 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /
+[pid: 402481|app: 0|req: 2/5] 168.138.5.55 () {48 vars in 892 bytes} [Sat Nov  9 21:52:43 2024] GET / => generated 2287 bytes in 15 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /
+[pid: 402483|app: 0|req: 2/6] 31.43.255.30 () {22 vars in 217 bytes} [Sun Nov 10 00:58:19 2024] GET / => generated 2280 bytes in 46 msecs (HTTP/1.0 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /example.com:443
+[pid: 402480|app: 0|req: 2/7] 154.213.184.18 () {26 vars in 316 bytes} [Sun Nov 10 01:28:44 2024] CONNECT example.com:443 => generated 1795 bytes in 41 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /
+[pid: 402482|app: 0|req: 2/8] 147.185.132.231 () {28 vars in 566 bytes} [Sun Nov 10 02:21:56 2024] GET / => generated 2285 bytes in 42 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /
+[pid: 402481|app: 0|req: 3/9] 106.107.232.140 () {28 vars in 424 bytes} [Sun Nov 10 02:51:22 2024] GET / => generated 2277 bytes in 46 msecs (HTTP/1.0 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /
+[pid: 402483|app: 0|req: 3/10] 185.191.126.248 () {24 vars in 250 bytes} [Sun Nov 10 03:37:30 2024] GET / => generated 2285 bytes in 43 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /
+[pid: 402482|app: 0|req: 3/11] 168.138.5.55 () {32 vars in 382 bytes} [Sun Nov 10 03:56:16 2024] GET / => generated 2288 bytes in 32 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /
+[pid: 402480|app: 0|req: 3/12] 168.138.5.55 () {32 vars in 382 bytes} [Sun Nov 10 03:56:17 2024] GET / => generated 2288 bytes in 6 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /
+[pid: 402481|app: 0|req: 4/13] 168.138.5.55 () {32 vars in 381 bytes} [Sun Nov 10 03:56:24 2024] GET / => generated 2288 bytes in 6 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /
+[pid: 402483|app: 0|req: 4/14] 168.138.5.55 () {40 vars in 524 bytes} [Sun Nov 10 04:45:37 2024] GET / => generated 2287 bytes in 41 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /
+[pid: 402480|app: 0|req: 4/15] 1.34.76.241 () {28 vars in 420 bytes} [Sun Nov 10 04:57:17 2024] GET / => generated 2277 bytes in 28 msecs (HTTP/1.0 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /.env
+[pid: 402482|app: 0|req: 4/16] 47.107.110.133 () {28 vars in 311 bytes} [Sun Nov 10 05:17:20 2024] GET /.env => generated 2315 bytes in 21 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /example.com:443
+[pid: 402481|app: 0|req: 5/17] 154.213.184.18 () {26 vars in 316 bytes} [Sun Nov 10 05:22:33 2024] CONNECT example.com:443 => generated 1795 bytes in 16 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /
+[pid: 402483|app: 0|req: 5/18] 205.210.31.35 () {28 vars in 564 bytes} [Sun Nov 10 05:36:54 2024] GET / => generated 2285 bytes in 27 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /
+[pid: 402482|app: 0|req: 5/19] 54.218.95.131 () {30 vars in 440 bytes} [Sun Nov 10 05:57:33 2024] GET / => generated 2285 bytes in 25 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /
+[pid: 402480|app: 0|req: 5/20] 1.34.239.180 () {28 vars in 421 bytes} [Sun Nov 10 06:16:20 2024] GET / => generated 2277 bytes in 29 msecs (HTTP/1.0 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /
+[pid: 402481|app: 0|req: 6/21] 168.138.5.55 () {48 vars in 658 bytes} [Sun Nov 10 06:53:18 2024] GET / => generated 2289 bytes in 41 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+[pid: 402483|app: 0|req: 6/22] 207.211.146.175 () {42 vars in 730 bytes} [Sun Nov 10 07:41:58 2024] OPTIONS /api/users/login/ => generated 0 bytes in 26 msecs (HTTP/1.1 200) 8 headers in 395 bytes (1 switches on core 1)
+[pid: 402480|app: 0|req: 6/23] 207.211.146.175 () {40 vars in 689 bytes} [Sun Nov 10 07:42:00 2024] POST /api/users/login/ => generated 570 bytes in 260 msecs (HTTP/1.1 200) 10 headers in 335 bytes (1 switches on core 1)
+Not Found: /
+[pid: 402482|app: 0|req: 6/24] 168.138.5.55 () {46 vars in 621 bytes} [Sun Nov 10 08:14:44 2024] GET / => generated 2289 bytes in 41 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+[pid: 402481|app: 0|req: 7/25] 207.211.146.175 () {40 vars in 689 bytes} [Sun Nov 10 08:43:19 2024] POST /api/users/login/ => generated 570 bytes in 291 msecs (HTTP/1.1 200) 10 headers in 335 bytes (1 switches on core 0)
+[pid: 402483|app: 0|req: 7/26] 207.211.146.175 () {40 vars in 688 bytes} [Sun Nov 10 08:45:20 2024] POST /api/users/login/ => generated 570 bytes in 380 msecs (HTTP/1.1 200) 10 headers in 335 bytes (1 switches on core 0)
+Not Found: /example.com:443
+[pid: 402482|app: 0|req: 7/27] 154.213.184.18 () {26 vars in 316 bytes} [Sun Nov 10 08:50:15 2024] CONNECT example.com:443 => generated 1795 bytes in 18 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /
+[pid: 402480|app: 0|req: 7/28] 204.188.228.52 () {30 vars in 425 bytes} [Sun Nov 10 09:42:27 2024] GET / => generated 2285 bytes in 41 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /login
+[pid: 402481|app: 0|req: 8/29] 204.188.228.52 () {30 vars in 435 bytes} [Sun Nov 10 09:42:28 2024] GET /login => generated 2318 bytes in 6 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+[pid: 402483|app: 0|req: 8/30] 207.211.146.175 () {42 vars in 730 bytes} [Sun Nov 10 09:50:09 2024] OPTIONS /api/users/login/ => generated 0 bytes in 6 msecs (HTTP/1.1 200) 8 headers in 395 bytes (1 switches on core 1)
+[pid: 402480|app: 0|req: 8/31] 207.211.146.175 () {40 vars in 689 bytes} [Sun Nov 10 09:50:11 2024] POST /api/users/login/ => generated 570 bytes in 254 msecs (HTTP/1.1 200) 10 headers in 335 bytes (1 switches on core 1)
+[pid: 402482|app: 0|req: 8/32] 207.211.146.175 () {40 vars in 689 bytes} [Sun Nov 10 09:51:01 2024] POST /api/users/login/ => generated 570 bytes in 259 msecs (HTTP/1.1 200) 10 headers in 335 bytes (1 switches on core 1)
+[pid: 402481|app: 0|req: 9/33] 207.211.146.175 () {40 vars in 689 bytes} [Sun Nov 10 09:51:29 2024] POST /api/users/login/ => generated 570 bytes in 221 msecs (HTTP/1.1 200) 10 headers in 335 bytes (1 switches on core 0)
+[pid: 402483|app: 0|req: 9/34] 207.211.146.175 () {40 vars in 689 bytes} [Sun Nov 10 09:54:35 2024] POST /api/users/login/ => generated 570 bytes in 228 msecs (HTTP/1.1 200) 10 headers in 335 bytes (1 switches on core 0)
+Bad Request: /api/users/login/
+[pid: 402482|app: 0|req: 9/35] 207.211.146.175 () {40 vars in 689 bytes} [Sun Nov 10 10:07:53 2024] POST /api/users/login/ => generated 81 bytes in 20 msecs (HTTP/1.1 400) 10 headers in 343 bytes (1 switches on core 0)
+Bad Request: /api/users/login/
+[pid: 402480|app: 0|req: 9/36] 207.211.146.175 () {40 vars in 689 bytes} [Sun Nov 10 10:10:38 2024] POST /api/users/login/ => generated 35 bytes in 37 msecs (HTTP/1.1 400) 10 headers in 343 bytes (1 switches on core 0)
+Bad Request: /api/users/login/
+[pid: 402481|app: 0|req: 10/37] 207.211.146.175 () {40 vars in 689 bytes} [Sun Nov 10 10:10:45 2024] POST /api/users/login/ => generated 41 bytes in 5 msecs (HTTP/1.1 400) 10 headers in 343 bytes (1 switches on core 1)
+Bad Request: /api/users/login/
+[pid: 402483|app: 0|req: 10/38] 207.211.146.175 () {40 vars in 689 bytes} [Sun Nov 10 10:14:32 2024] POST /api/users/login/ => generated 41 bytes in 3 msecs (HTTP/1.1 400) 10 headers in 343 bytes (1 switches on core 1)
+Not Found: /
+[pid: 402480|app: 0|req: 10/39] 45.79.68.91 () {30 vars in 438 bytes} [Sun Nov 10 10:14:58 2024] GET / => generated 2285 bytes in 8 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /
+[pid: 402482|app: 0|req: 10/40] 45.56.117.187 () {22 vars in 218 bytes} [Sun Nov 10 10:15:34 2024] GET / => generated 2280 bytes in 5 msecs (HTTP/1.0 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /nice ports,/Trinity.txt.bak
+[pid: 402481|app: 0|req: 11/41] 45.56.117.187 () {22 vars in 280 bytes} [Sun Nov 10 10:15:36 2024] GET /nice%20ports%2C/Tri%6Eity.txt%2ebak => generated 2381 bytes in 5 msecs (HTTP/1.0 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /
+[pid: 402483|app: 0|req: 11/42] 45.56.117.187 () {22 vars in 222 bytes} [Sun Nov 10 10:15:37 2024] OPTIONS / => generated 2284 bytes in 6 msecs (HTTP/1.0 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /
+[pid: 402482|app: 0|req: 11/43] 45.56.117.187 () {22 vars in 220 bytes} [Sun Nov 10 10:15:37 2024] OPTIONS / => generated 2284 bytes in 5 msecs (RTSP/1.0 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /sip:nm
+[pid: 402480|app: 0|req: 11/44] 45.56.117.187 () {40 vars in 467 bytes} [Sun Nov 10 10:15:38 2024] OPTIONS sip:nm => generated 1765 bytes in 4 msecs (SIP/2.0 404) 7 headers in 228 bytes (1 switches on core 0)
+Bad Request: /api/users/login/
+[pid: 402481|app: 0|req: 12/45] 207.211.146.175 () {40 vars in 688 bytes} [Sun Nov 10 10:30:15 2024] POST /api/users/login/ => generated 81 bytes in 32 msecs (HTTP/1.1 400) 10 headers in 343 bytes (1 switches on core 1)
+Bad Request: /api/users/login/
+[pid: 402483|app: 0|req: 12/46] 207.211.146.175 () {40 vars in 689 bytes} [Sun Nov 10 10:31:02 2024] POST /api/users/login/ => generated 35 bytes in 47 msecs (HTTP/1.1 400) 10 headers in 343 bytes (1 switches on core 1)
+Bad Request: /api/users/login/
+[pid: 402480|app: 0|req: 12/47] 207.211.146.175 () {40 vars in 689 bytes} [Sun Nov 10 10:31:19 2024] POST /api/users/login/ => generated 35 bytes in 8 msecs (HTTP/1.1 400) 10 headers in 343 bytes (1 switches on core 1)
+Bad Request: /api/users/login/
+[pid: 402482|app: 0|req: 12/48] 207.211.146.175 () {40 vars in 689 bytes} [Sun Nov 10 10:46:15 2024] POST /api/users/login/ => generated 81 bytes in 15 msecs (HTTP/1.1 400) 10 headers in 343 bytes (1 switches on core 1)
+Bad Request: /api/users/login/
+[pid: 402481|app: 0|req: 13/49] 207.211.146.175 () {40 vars in 689 bytes} [Sun Nov 10 10:54:27 2024] POST /api/users/login/ => generated 81 bytes in 15 msecs (HTTP/1.1 400) 10 headers in 343 bytes (1 switches on core 0)
+Bad Request: /api/users/login/
+[pid: 402483|app: 0|req: 13/50] 207.211.146.175 () {40 vars in 689 bytes} [Sun Nov 10 10:55:43 2024] POST /api/users/login/ => generated 81 bytes in 3 msecs (HTTP/1.1 400) 10 headers in 343 bytes (1 switches on core 0)
+Not Found: /
+[pid: 402482|app: 0|req: 13/51] 147.185.132.88 () {28 vars in 297 bytes} [Sun Nov 10 10:57:08 2024] GET / => generated 2285 bytes in 14 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Bad Request: /api/users/login/
+[pid: 402480|app: 0|req: 13/52] 207.211.146.175 () {40 vars in 689 bytes} [Sun Nov 10 11:00:07 2024] POST /api/users/login/ => generated 81 bytes in 5 msecs (HTTP/1.1 400) 10 headers in 343 bytes (1 switches on core 0)
+[pid: 402481|app: 0|req: 14/53] 207.211.146.175 () {40 vars in 688 bytes} [Sun Nov 10 11:02:36 2024] POST /api/users/login/ => generated 570 bytes in 281 msecs (HTTP/1.1 200) 10 headers in 335 bytes (1 switches on core 1)
+Not Found: /
+[pid: 402483|app: 0|req: 14/54] 87.236.176.233 () {32 vars in 434 bytes} [Sun Nov 10 11:03:30 2024] GET / => generated 2296 bytes in 7 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+[pid: 402480|app: 0|req: 14/55] 207.211.146.175 () {40 vars in 689 bytes} [Sun Nov 10 11:06:18 2024] POST /api/users/login/ => generated 570 bytes in 218 msecs (HTTP/1.1 200) 10 headers in 335 bytes (1 switches on core 1)
+Not Found: /
+[pid: 402482|app: 0|req: 14/56] 185.191.126.248 () {24 vars in 250 bytes} [Sun Nov 10 11:09:43 2024] GET / => generated 2285 bytes in 8 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+[pid: 402481|app: 0|req: 15/57] 207.211.146.175 () {40 vars in 689 bytes} [Sun Nov 10 11:33:41 2024] POST /api/users/login/ => generated 570 bytes in 284 msecs (HTTP/1.1 200) 10 headers in 335 bytes (1 switches on core 0)
+Not Found: /
+[pid: 402483|app: 0|req: 15/58] 168.138.5.55 () {48 vars in 892 bytes} [Sun Nov 10 12:23:53 2024] GET / => generated 2287 bytes in 43 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /example.com:443
+[pid: 402482|app: 0|req: 15/59] 154.213.184.18 () {26 vars in 316 bytes} [Sun Nov 10 12:48:49 2024] CONNECT example.com:443 => generated 1795 bytes in 28 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /
+[pid: 402480|app: 0|req: 15/60] 45.84.89.3 () {28 vars in 419 bytes} [Sun Nov 10 13:57:39 2024] GET / => generated 2285 bytes in 50 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /
+[pid: 402481|app: 0|req: 16/61] 65.49.1.56 () {30 vars in 427 bytes} [Sun Nov 10 14:38:43 2024] GET / => generated 2285 bytes in 41 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /favicon.ico
+[pid: 402483|app: 0|req: 16/62] 65.49.1.56 () {30 vars in 449 bytes} [Sun Nov 10 14:38:53 2024] GET /favicon.ico => generated 2336 bytes in 6 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /http:/api.ipify.org/
+[pid: 402480|app: 0|req: 16/63] 65.49.1.60 () {26 vars in 452 bytes} [Sun Nov 10 14:38:57 2024] GET http://api.ipify.org/?format=json => generated 1818 bytes in 6 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /www.shadowserver.org:443
+[pid: 402482|app: 0|req: 16/64] 65.49.1.63 () {32 vars in 533 bytes} [Sun Nov 10 14:39:01 2024] CONNECT www.shadowserver.org:443 => generated 1827 bytes in 6 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /
+[pid: 402481|app: 0|req: 17/65] 168.138.5.55 () {48 vars in 661 bytes} [Sun Nov 10 15:16:14 2024] GET / => generated 2289 bytes in 41 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /example.com:443
+[pid: 402483|app: 0|req: 17/66] 154.213.184.18 () {26 vars in 316 bytes} [Sun Nov 10 17:02:22 2024] CONNECT example.com:443 => generated 1795 bytes in 40 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /robots.txt
+[pid: 402482|app: 0|req: 17/67] 168.138.5.55 () {40 vars in 594 bytes} [Sun Nov 10 18:16:18 2024] GET /robots.txt => generated 2335 bytes in 42 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /
+[pid: 402480|app: 0|req: 17/68] 168.138.5.55 () {44 vars in 855 bytes} [Sun Nov 10 18:16:18 2024] GET / => generated 2287 bytes in 6 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /.env
+[pid: 402481|app: 0|req: 18/69] 121.41.165.41 () {28 vars in 310 bytes} [Sun Nov 10 18:45:16 2024] GET /.env => generated 2315 bytes in 46 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /
+[pid: 402483|app: 0|req: 18/70] 168.138.5.55 () {48 vars in 892 bytes} [Sun Nov 10 19:11:17 2024] GET / => generated 2287 bytes in 41 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /tactics
+[pid: 402480|app: 0|req: 18/71] 168.138.5.55 () {44 vars in 817 bytes} [Sun Nov 10 19:14:25 2024] GET /tactics?page=6 => generated 2334 bytes in 8 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /example.com:443
+[pid: 402482|app: 0|req: 18/72] 154.213.184.18 () {26 vars in 316 bytes} [Sun Nov 10 20:54:50 2024] CONNECT example.com:443 => generated 1795 bytes in 39 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /
+[pid: 402481|app: 0|req: 19/73] 95.214.53.211 () {36 vars in 506 bytes} [Sun Nov 10 21:27:04 2024] GET / => generated 2285 bytes in 42 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /tactics
+[pid: 402483|app: 0|req: 19/74] 168.138.5.55 () {44 vars in 820 bytes} [Sun Nov 10 21:44:29 2024] GET /tactics?page=11 => generated 2335 bytes in 35 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /
+[pid: 402482|app: 0|req: 19/75] 198.235.24.148 () {28 vars in 297 bytes} [Sun Nov 10 21:52:44 2024] GET / => generated 2285 bytes in 12 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /tactics
+[pid: 402480|app: 0|req: 19/76] 168.138.5.55 () {44 vars in 817 bytes} [Sun Nov 10 22:03:30 2024] GET /tactics?page=2 => generated 2334 bytes in 21 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /
+[pid: 402481|app: 0|req: 20/77] 168.138.5.55 () {36 vars in 493 bytes} [Sun Nov 10 22:17:16 2024] GET / => generated 2287 bytes in 26 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /
+[pid: 402483|app: 0|req: 20/78] 168.138.5.55 () {36 vars in 495 bytes} [Sun Nov 10 22:17:20 2024] GET / => generated 2288 bytes in 6 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /.env
+[pid: 402480|app: 0|req: 20/79] 47.238.220.99 () {28 vars in 310 bytes} [Sun Nov 10 22:25:57 2024] GET /.env => generated 2315 bytes in 9 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /
+[pid: 402482|app: 0|req: 20/80] 203.55.131.5 () {30 vars in 422 bytes} [Sun Nov 10 23:26:27 2024] GET / => generated 2285 bytes in 41 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /favicon.ico
+[pid: 402481|app: 0|req: 21/81] 203.55.131.5 () {28 vars in 417 bytes} [Sun Nov 10 23:26:58 2024] GET /favicon.ico => generated 2336 bytes in 7 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /tactics
+[pid: 402483|app: 0|req: 21/82] 168.138.5.55 () {44 vars in 819 bytes} [Mon Nov 11 00:05:14 2024] GET /tactics?page=12 => generated 2335 bytes in 42 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /robots.txt
+[pid: 402482|app: 0|req: 21/83] 168.138.5.55 () {46 vars in 740 bytes} [Mon Nov 11 00:18:07 2024] GET /robots.txt => generated 2336 bytes in 24 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /tactics
+[pid: 402480|app: 0|req: 21/84] 168.138.5.55 () {40 vars in 651 bytes} [Mon Nov 11 00:18:13 2024] GET /tactics => generated 2327 bytes in 6 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /example.com:443
+[pid: 402481|app: 0|req: 22/85] 154.213.184.18 () {26 vars in 316 bytes} [Mon Nov 11 00:43:27 2024] CONNECT example.com:443 => generated 1795 bytes in 40 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /
+[pid: 402483|app: 0|req: 22/86] 185.191.126.248 () {24 vars in 249 bytes} [Mon Nov 11 02:01:48 2024] GET / => generated 2285 bytes in 42 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /
+[pid: 402480|app: 0|req: 22/87] 209.73.89.209 () {28 vars in 422 bytes} [Mon Nov 11 02:40:50 2024] GET / => generated 2277 bytes in 44 msecs (HTTP/1.0 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /
+[pid: 402482|app: 0|req: 22/88] 61.216.35.127 () {28 vars in 422 bytes} [Mon Nov 11 02:56:16 2024] GET / => generated 2277 bytes in 36 msecs (HTTP/1.0 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /tactics
+[pid: 402481|app: 0|req: 23/89] 168.138.5.55 () {44 vars in 821 bytes} [Mon Nov 11 02:57:10 2024] GET /tactics?page=21 => generated 2335 bytes in 8 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /tactics
+[pid: 402483|app: 0|req: 23/90] 168.138.5.55 () {44 vars in 816 bytes} [Mon Nov 11 03:21:11 2024] GET /tactics?page=4 => generated 2334 bytes in 43 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /
+[pid: 402482|app: 0|req: 23/91] 168.138.5.55 () {38 vars in 590 bytes} [Mon Nov 11 04:06:45 2024] GET / => generated 2287 bytes in 43 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /
+[pid: 402480|app: 0|req: 23/92] 168.138.5.55 () {38 vars in 589 bytes} [Mon Nov 11 04:09:46 2024] GET / => generated 2287 bytes in 8 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /tactics
+[pid: 402481|app: 0|req: 24/93] 168.138.5.55 () {44 vars in 817 bytes} [Mon Nov 11 04:21:56 2024] GET /tactics?page=16 => generated 2335 bytes in 23 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /example.com:443
+[pid: 402483|app: 0|req: 24/94] 154.213.184.18 () {26 vars in 316 bytes} [Mon Nov 11 04:41:22 2024] CONNECT example.com:443 => generated 1795 bytes in 27 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /
+[pid: 402480|app: 0|req: 24/95] 167.94.145.100 () {24 vars in 248 bytes} [Mon Nov 11 04:44:45 2024] GET / => generated 2285 bytes in 19 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /
+[pid: 402482|app: 0|req: 24/96] 167.94.145.100 () {30 vars in 383 bytes} [Mon Nov 11 04:44:49 2024] GET / => generated 2285 bytes in 6 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /*
+[pid: 402481|app: 0|req: 25/97] 167.94.145.100 () {22 vars in 219 bytes} [Mon Nov 11 04:44:50 2024] PRI * => generated 1746 bytes in 6 msecs (HTTP/2.0 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /aaa9
+[pid: 402483|app: 0|req: 25/98] 142.93.115.5 () {30 vars in 339 bytes} [Mon Nov 11 05:14:53 2024] GET /aaa9 => generated 2315 bytes in 43 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /aab8
+[pid: 402482|app: 0|req: 25/99] 142.93.115.5 () {30 vars in 340 bytes} [Mon Nov 11 05:14:54 2024] GET /aab8 => generated 2315 bytes in 6 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /
+[pid: 402480|app: 0|req: 25/100] 142.93.115.5 () {30 vars in 332 bytes} [Mon Nov 11 05:14:54 2024] GET / => generated 2285 bytes in 6 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /
+[pid: 402481|app: 0|req: 26/101] 59.127.230.183 () {28 vars in 423 bytes} [Mon Nov 11 06:54:09 2024] GET / => generated 2277 bytes in 42 msecs (HTTP/1.0 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /
+[pid: 402483|app: 0|req: 26/102] 114.33.109.227 () {28 vars in 423 bytes} [Mon Nov 11 07:09:20 2024] GET / => generated 2277 bytes in 16 msecs (HTTP/1.0 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /
+[pid: 402480|app: 0|req: 26/103] 198.235.24.10 () {28 vars in 564 bytes} [Mon Nov 11 07:11:10 2024] GET / => generated 2285 bytes in 11 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /example.com:443
+[pid: 402482|app: 0|req: 26/104] 154.213.184.18 () {26 vars in 316 bytes} [Mon Nov 11 08:41:46 2024] CONNECT example.com:443 => generated 1795 bytes in 40 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /
+[pid: 402481|app: 0|req: 27/105] 168.138.5.55 () {40 vars in 638 bytes} [Mon Nov 11 09:17:53 2024] GET / => generated 2287 bytes in 42 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /tactics
+[pid: 402483|app: 0|req: 27/106] 168.138.5.55 () {44 vars in 819 bytes} [Mon Nov 11 09:45:26 2024] GET /tactics?page=18 => generated 2335 bytes in 31 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /
+[pid: 402482|app: 0|req: 27/107] 59.126.194.111 () {28 vars in 423 bytes} [Mon Nov 11 10:11:57 2024] GET / => generated 2277 bytes in 41 msecs (HTTP/1.0 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /
+[pid: 402480|app: 0|req: 27/108] 198.235.24.211 () {28 vars in 297 bytes} [Mon Nov 11 10:49:31 2024] GET / => generated 2285 bytes in 40 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /static/rest_framework/css/prettify.css
+[pid: 402481|app: 0|req: 28/109] 114.106.176.255 () {38 vars in 744 bytes} [Mon Nov 11 10:49:50 2024] GET /static/rest_framework/css/prettify.css => generated 2417 bytes in 8 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /static/rest_framework/css/bootstrap-tweaks.css
+Not Found: /static/rest_framework/js/jquery-3.7.1.min.js
+[pid: 402483|app: 0|req: 29/110] 114.106.176.255 () {38 vars in 741 bytes} [Mon Nov 11 10:49:50 2024] GET /static/rest_framework/js/jquery-3.7.1.min.js => generated 2435 bytes in 4 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+[pid: 402483|app: 0|req: 29/111] 114.106.176.255 () {38 vars in 760 bytes} [Mon Nov 11 10:49:50 2024] GET /static/rest_framework/css/bootstrap-tweaks.css => generated 2441 bytes in 16 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /static/rest_framework/js/ajax-form.js
+[pid: 402480|app: 0|req: 28/112] 114.106.176.255 () {38 vars in 727 bytes} [Mon Nov 11 10:49:50 2024] GET /static/rest_framework/js/ajax-form.js => generated 2414 bytes in 14 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /static/rest_framework/css/bootstrap.min.css
+[pid: 402481|app: 0|req: 29/113] 114.106.176.255 () {38 vars in 754 bytes} [Mon Nov 11 10:49:50 2024] GET /static/rest_framework/css/bootstrap.min.css => generated 2432 bytes in 6 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /static/rest_framework/css/default.css
+[pid: 402482|app: 0|req: 28/114] 114.106.176.255 () {38 vars in 742 bytes} [Mon Nov 11 10:49:50 2024] GET /static/rest_framework/css/default.css => generated 2414 bytes in 12 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /static/rest_framework/js/load-ajax-form.js
+Not Found: /static/rest_framework/js/bootstrap.min.js
+[pid: 402480|app: 0|req: 29/115] 114.106.176.255 () {38 vars in 737 bytes} [Mon Nov 11 10:49:51 2024] GET /static/rest_framework/js/load-ajax-form.js => generated 2429 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+[pid: 402482|app: 0|req: 29/116] 114.106.176.255 () {38 vars in 735 bytes} [Mon Nov 11 10:49:51 2024] GET /static/rest_framework/js/bootstrap.min.js => generated 2426 bytes in 6 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /static/rest_framework/js/prettify-min.js
+[pid: 402481|app: 0|req: 30/117] 114.106.176.255 () {38 vars in 733 bytes} [Mon Nov 11 10:49:51 2024] GET /static/rest_framework/js/prettify-min.js => generated 2423 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /static/rest_framework/js/default.js
+[pid: 402483|app: 0|req: 30/118] 114.106.176.255 () {38 vars in 723 bytes} [Mon Nov 11 10:49:51 2024] GET /static/rest_framework/js/default.js => generated 2408 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /static/rest_framework/js/csrf.js
+[pid: 402483|app: 0|req: 31/119] 114.106.176.255 () {38 vars in 717 bytes} [Mon Nov 11 10:49:51 2024] GET /static/rest_framework/js/csrf.js => generated 2399 bytes in 6 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /favicon.ico
+[pid: 402480|app: 0|req: 30/120] 114.106.176.255 () {32 vars in 540 bytes} [Mon Nov 11 10:49:52 2024] GET /favicon.ico => generated 2336 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /.env
+[pid: 402481|app: 0|req: 31/121] 47.243.35.37 () {28 vars in 308 bytes} [Mon Nov 11 11:06:12 2024] GET /.env => generated 2315 bytes in 23 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+[pid: 402482|app: 0|req: 30/122] 207.211.146.175 () {34 vars in 548 bytes} [Mon Nov 11 11:25:41 2024] GET /api/basics/basic/?name=%E5%8D%8E%E8%BD%AF%E7%A7%91%E6%8A%80 => generated 195 bytes in 54 msecs (HTTP/1.1 200) 8 headers in 256 bytes (1 switches on core 1)
+Not Found: /api/basics/analyze/
+[pid: 402480|app: 0|req: 31/123] 207.211.146.175 () {36 vars in 516 bytes} [Mon Nov 11 11:27:07 2024] POST /api/basics/analyze/?code=sh601618 => generated 2600 bytes in 10 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /api/basics/analyze/
+[pid: 402482|app: 0|req: 31/124] 207.211.146.175 () {38 vars in 586 bytes} [Mon Nov 11 11:28:12 2024] POST /api/basics/analyze/ => generated 2586 bytes in 6 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /api/basics/analyze/
+[pid: 402481|app: 0|req: 32/125] 207.211.146.175 () {38 vars in 587 bytes} [Mon Nov 11 11:29:58 2024] POST /api/basics/analyze/ => generated 2586 bytes in 7 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /api/basics/analyze/
+[pid: 402483|app: 0|req: 32/126] 207.211.146.175 () {38 vars in 587 bytes} [Mon Nov 11 11:36:07 2024] POST /api/basics/analyze/ => generated 2586 bytes in 27 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /api/basics/analyze/
+[pid: 402483|app: 0|req: 33/127] 207.211.146.175 () {38 vars in 587 bytes} [Mon Nov 11 11:37:31 2024] POST /api/basics/analyze/ => generated 2586 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /
+[pid: 402480|app: 0|req: 32/128] 147.185.132.243 () {28 vars in 566 bytes} [Mon Nov 11 11:37:44 2024] GET / => generated 2285 bytes in 8 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /api/basics/analyze/
+[pid: 402481|app: 0|req: 33/129] 207.211.146.175 () {38 vars in 587 bytes} [Mon Nov 11 11:38:02 2024] POST /api/basics/analyze/ => generated 2586 bytes in 7 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /example.com:443
+[pid: 402482|app: 0|req: 32/130] 154.213.184.18 () {26 vars in 316 bytes} [Mon Nov 11 12:52:28 2024] CONNECT example.com:443 => generated 1795 bytes in 42 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /
+[pid: 402480|app: 0|req: 33/131] 87.236.176.204 () {32 vars in 423 bytes} [Mon Nov 11 13:43:04 2024] GET / => generated 2285 bytes in 40 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /
+[pid: 402482|app: 0|req: 33/132] 45.84.89.2 () {28 vars in 419 bytes} [Mon Nov 11 16:44:26 2024] GET / => generated 2285 bytes in 40 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /
+[pid: 402481|app: 0|req: 34/133] 168.138.5.55 () {48 vars in 892 bytes} [Mon Nov 11 16:49:39 2024] GET / => generated 2287 bytes in 20 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /example.com:443
+[pid: 402483|app: 0|req: 34/134] 154.213.184.18 () {26 vars in 315 bytes} [Mon Nov 11 16:55:07 2024] CONNECT example.com:443 => generated 1795 bytes in 9 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /
+[pid: 402483|app: 0|req: 35/135] 57.152.56.31 () {30 vars in 333 bytes} [Mon Nov 11 18:51:53 2024] GET / => generated 2285 bytes in 40 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /
+[pid: 402480|app: 0|req: 34/136] 184.105.247.247 () {30 vars in 431 bytes} [Mon Nov 11 19:52:56 2024] GET / => generated 2285 bytes in 41 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /favicon.ico
+[pid: 402481|app: 0|req: 35/137] 184.105.247.252 () {30 vars in 462 bytes} [Mon Nov 11 19:53:27 2024] GET /favicon.ico => generated 2336 bytes in 6 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /http:/api.ipify.org/
+[pid: 402482|app: 0|req: 34/138] 184.105.247.247 () {26 vars in 453 bytes} [Mon Nov 11 19:53:50 2024] GET http://api.ipify.org/?format=json => generated 1818 bytes in 6 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /www.shadowserver.org:443
+[pid: 402480|app: 0|req: 35/139] 184.105.247.238 () {32 vars in 534 bytes} [Mon Nov 11 19:54:13 2024] CONNECT www.shadowserver.org:443 => generated 1827 bytes in 4 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /example.com:443
+[pid: 402482|app: 0|req: 35/140] 154.213.184.18 () {26 vars in 314 bytes} [Mon Nov 11 20:46:34 2024] CONNECT example.com:443 => generated 1795 bytes in 40 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /
+[pid: 402481|app: 0|req: 36/141] 114.33.164.167 () {28 vars in 422 bytes} [Mon Nov 11 21:24:34 2024] GET / => generated 2277 bytes in 41 msecs (HTTP/1.0 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /
+[pid: 402483|app: 0|req: 36/142] 205.210.31.77 () {28 vars in 295 bytes} [Mon Nov 11 21:48:15 2024] GET / => generated 2285 bytes in 38 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /
+[pid: 402483|app: 0|req: 37/143] 185.191.126.248 () {24 vars in 249 bytes} [Mon Nov 11 23:22:08 2024] GET / => generated 2285 bytes in 40 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /
+[pid: 402480|app: 0|req: 36/144] 128.199.43.219 () {30 vars in 334 bytes} [Tue Nov 12 00:04:03 2024] GET / => generated 2285 bytes in 41 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /hotmail-com.olc.protection.outlook.com:25
+[pid: 402481|app: 0|req: 37/145] 80.66.83.47 () {24 vars in 354 bytes} [Tue Nov 12 00:34:10 2024] CONNECT hotmail-com.olc.protection.outlook.com:25 => generated 1899 bytes in 38 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /example.com:443
+[pid: 402482|app: 0|req: 36/146] 154.213.184.18 () {26 vars in 316 bytes} [Tue Nov 12 00:58:21 2024] CONNECT example.com:443 => generated 1795 bytes in 43 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /.env
+[pid: 402480|app: 0|req: 37/147] 47.93.242.85 () {28 vars in 309 bytes} [Tue Nov 12 01:14:53 2024] GET /.env => generated 2315 bytes in 33 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /
+[pid: 402482|app: 0|req: 37/148] 162.142.125.193 () {24 vars in 250 bytes} [Tue Nov 12 02:16:12 2024] GET / => generated 2285 bytes in 42 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /
+[pid: 402481|app: 0|req: 38/149] 162.142.125.193 () {30 vars in 384 bytes} [Tue Nov 12 02:16:18 2024] GET / => generated 2285 bytes in 7 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /*
+[pid: 402483|app: 0|req: 38/150] 162.142.125.193 () {22 vars in 219 bytes} [Tue Nov 12 02:16:19 2024] PRI * => generated 1746 bytes in 6 msecs (HTTP/2.0 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /robots.txt
+[pid: 402483|app: 0|req: 39/151] 168.138.5.55 () {46 vars in 780 bytes} [Tue Nov 12 02:18:31 2024] GET /robots.txt => generated 2335 bytes in 7 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /
+[pid: 402480|app: 0|req: 38/152] 45.49.6.7 () {30 vars in 446 bytes} [Tue Nov 12 02:52:40 2024] GET / => generated 2285 bytes in 48 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /
+[pid: 402481|app: 0|req: 39/153] 76.10.174.19 () {30 vars in 449 bytes} [Tue Nov 12 02:54:55 2024] GET / => generated 2285 bytes in 7 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /
+[pid: 402482|app: 0|req: 38/154] 172.105.184.153 () {22 vars in 220 bytes} [Tue Nov 12 03:05:06 2024] GET / => generated 2280 bytes in 17 msecs (HTTP/1.0 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /nice ports,/Trinity.txt.bak
+[pid: 402480|app: 0|req: 39/155] 172.105.184.153 () {22 vars in 282 bytes} [Tue Nov 12 03:05:11 2024] GET /nice%20ports%2C/Tri%6Eity.txt%2ebak => generated 2381 bytes in 5 msecs (HTTP/1.0 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /
+[pid: 402482|app: 0|req: 39/156] 172.105.184.153 () {22 vars in 222 bytes} [Tue Nov 12 03:05:17 2024] OPTIONS / => generated 2284 bytes in 5 msecs (HTTP/1.0 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /
+[pid: 402481|app: 0|req: 40/157] 172.105.184.153 () {22 vars in 223 bytes} [Tue Nov 12 03:05:17 2024] OPTIONS / => generated 2284 bytes in 5 msecs (RTSP/1.0 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /sip:nm
+[pid: 402483|app: 0|req: 40/158] 172.105.184.153 () {40 vars in 469 bytes} [Tue Nov 12 03:05:17 2024] OPTIONS sip:nm => generated 1765 bytes in 7 msecs (SIP/2.0 404) 7 headers in 228 bytes (1 switches on core 0)
+Not Found: /base.pl
+[pid: 402483|app: 0|req: 41/159] 172.105.184.153 () {28 vars in 318 bytes} [Tue Nov 12 03:05:44 2024] GET /base.pl => generated 2324 bytes in 8 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /main.jsp
+[pid: 402480|app: 0|req: 40/160] 172.105.184.153 () {28 vars in 320 bytes} [Tue Nov 12 03:05:44 2024] GET /main.jsp => generated 2327 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /Portal/Portal.mwsl
+[pid: 402481|app: 0|req: 41/161] 172.105.184.153 () {28 vars in 340 bytes} [Tue Nov 12 03:05:44 2024] GET /Portal/Portal.mwsl => generated 2357 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /indice.pl
+[pid: 402482|app: 0|req: 40/162] 172.105.184.153 () {28 vars in 322 bytes} [Tue Nov 12 03:05:44 2024] GET /indice.pl => generated 2330 bytes in 7 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /docs/cplugError.html/
+[pid: 402480|app: 0|req: 41/163] 172.105.184.153 () {28 vars in 346 bytes} [Tue Nov 12 03:05:45 2024] GET /docs/cplugError.html/ => generated 2366 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /nmaplowercheck1731351944
+Not Found: /menu.pl
+[pid: 402481|app: 0|req: 42/164] 172.105.184.153 () {28 vars in 318 bytes} [Tue Nov 12 03:05:45 2024] GET /menu.pl => generated 2324 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+[pid: 402482|app: 0|req: 41/165] 172.105.184.153 () {28 vars in 352 bytes} [Tue Nov 12 03:05:45 2024] GET /nmaplowercheck1731351944 => generated 2375 bytes in 6 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /server-status
+[pid: 402483|app: 0|req: 42/166] 172.105.184.153 () {28 vars in 330 bytes} [Tue Nov 12 03:05:45 2024] GET /server-status => generated 2342 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /base.php
+[pid: 402483|app: 0|req: 43/167] 172.105.184.153 () {28 vars in 320 bytes} [Tue Nov 12 03:05:45 2024] GET /base.php => generated 2327 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /HNAP1
+[pid: 402480|app: 0|req: 42/168] 172.105.184.153 () {28 vars in 314 bytes} [Tue Nov 12 03:05:45 2024] GET /HNAP1 => generated 2318 bytes in 6 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /home.jsa
+[pid: 402481|app: 0|req: 43/169] 172.105.184.153 () {28 vars in 320 bytes} [Tue Nov 12 03:05:45 2024] GET /home.jsa => generated 2327 bytes in 4 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /admin.cgi
+[pid: 402482|app: 0|req: 42/170] 172.105.184.153 () {28 vars in 322 bytes} [Tue Nov 12 03:05:45 2024] GET /admin.cgi => generated 2330 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /default.jsa
+[pid: 402480|app: 0|req: 43/171] 172.105.184.153 () {28 vars in 326 bytes} [Tue Nov 12 03:05:45 2024] GET /default.jsa => generated 2336 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /
+[pid: 402481|app: 0|req: 44/172] 172.105.184.153 () {28 vars in 304 bytes} [Tue Nov 12 03:05:45 2024] GET / => generated 2285 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /inicio.pl
+[pid: 402482|app: 0|req: 43/173] 172.105.184.153 () {28 vars in 320 bytes} [Tue Nov 12 03:05:46 2024] GET /inicio.pl => generated 2330 bytes in 4 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /cVZI
+[pid: 402483|app: 0|req: 44/174] 172.105.184.153 () {28 vars in 311 bytes} [Tue Nov 12 03:05:46 2024] GET /cVZI => generated 2315 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /inicio.cfm
+[pid: 402483|app: 0|req: 45/175] 172.105.184.153 () {28 vars in 323 bytes} [Tue Nov 12 03:05:46 2024] GET /inicio.cfm => generated 2333 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /main.php
+[pid: 402480|app: 0|req: 44/176] 172.105.184.153 () {28 vars in 319 bytes} [Tue Nov 12 03:05:46 2024] GET /main.php => generated 2327 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /webui
+[pid: 402481|app: 0|req: 45/177] 172.105.184.153 () {28 vars in 314 bytes} [Tue Nov 12 03:05:46 2024] GET /webui => generated 2318 bytes in 4 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /start.jsa
+[pid: 402482|app: 0|req: 44/178] 172.105.184.153 () {28 vars in 322 bytes} [Tue Nov 12 03:05:46 2024] GET /start.jsa => generated 2330 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /
+[pid: 402480|app: 0|req: 45/179] 172.105.184.153 () {28 vars in 304 bytes} [Tue Nov 12 03:05:46 2024] GET / => generated 2285 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /menu.asp
+[pid: 402481|app: 0|req: 46/180] 172.105.184.153 () {28 vars in 320 bytes} [Tue Nov 12 03:05:46 2024] GET /menu.asp => generated 2327 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /webui
+[pid: 402482|app: 0|req: 45/181] 172.105.184.153 () {28 vars in 314 bytes} [Tue Nov 12 03:05:46 2024] GET /webui => generated 2318 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /owa/
+[pid: 402483|app: 0|req: 46/182] 172.105.184.153 () {28 vars in 312 bytes} [Tue Nov 12 03:05:46 2024] GET /owa/ => generated 2315 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /base.jsp
+[pid: 402483|app: 0|req: 47/183] 172.105.184.153 () {28 vars in 320 bytes} [Tue Nov 12 03:05:46 2024] GET /base.jsp => generated 2327 bytes in 6 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /user
+Not Found: /
+[pid: 402480|app: 0|req: 46/184] 172.105.184.153 () {28 vars in 312 bytes} [Tue Nov 12 03:05:46 2024] GET /user => generated 2315 bytes in 6 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+[pid: 402481|app: 0|req: 47/185] 172.105.184.153 () {28 vars in 385 bytes} [Tue Nov 12 03:05:46 2024] GET /?=PHPE9568F36-D428-11d2-A769-00AA001ACF42 => generated 2326 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /owa/
+[pid: 402482|app: 0|req: 46/186] 172.105.184.153 () {28 vars in 312 bytes} [Tue Nov 12 03:05:46 2024] GET /owa/ => generated 2315 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /menu.aspx
+[pid: 402480|app: 0|req: 47/187] 172.105.184.153 () {28 vars in 322 bytes} [Tue Nov 12 03:05:47 2024] GET /menu.aspx => generated 2330 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /
+[pid: 402481|app: 0|req: 48/188] 172.105.184.153 () {28 vars in 385 bytes} [Tue Nov 12 03:05:47 2024] GET /?=PHPB8B5F2A0-3C92-11d3-A3A9-4C7B08C10000 => generated 2326 bytes in 7 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /user
+[pid: 402482|app: 0|req: 47/189] 172.105.184.153 () {28 vars in 312 bytes} [Tue Nov 12 03:05:47 2024] GET /user => generated 2315 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /default.shtml
+[pid: 402483|app: 0|req: 48/190] 172.105.184.153 () {28 vars in 330 bytes} [Tue Nov 12 03:05:47 2024] GET /default.shtml => generated 2342 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /human.aspx
+[pid: 402483|app: 0|req: 49/191] 172.105.184.153 () {28 vars in 324 bytes} [Tue Nov 12 03:05:47 2024] GET /human.aspx => generated 2333 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /
+[pid: 402480|app: 0|req: 48/192] 172.105.184.153 () {28 vars in 304 bytes} [Tue Nov 12 03:05:47 2024] GET / => generated 2285 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /*
+[pid: 402481|app: 0|req: 49/193] 172.105.184.153 () {24 vars in 238 bytes} [Tue Nov 12 03:05:47 2024] OPTIONS * => generated 1750 bytes in 4 msecs (RTSP/1.0 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /robots.txt
+[pid: 402482|app: 0|req: 48/194] 172.105.184.153 () {28 vars in 324 bytes} [Tue Nov 12 03:05:47 2024] GET /robots.txt => generated 2333 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /human.aspx
+[pid: 402480|app: 0|req: 49/195] 172.105.184.153 () {28 vars in 324 bytes} [Tue Nov 12 03:05:47 2024] GET /human.aspx => generated 2333 bytes in 4 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /
+[pid: 402481|app: 0|req: 50/196] 172.105.184.153 () {28 vars in 304 bytes} [Tue Nov 12 03:05:47 2024] GET / => generated 2285 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /home.cfm
+[pid: 402482|app: 0|req: 49/197] 172.105.184.153 () {28 vars in 320 bytes} [Tue Nov 12 03:05:47 2024] GET /home.cfm => generated 2327 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /dana-cached/hc/HostCheckerInstaller.osx
+[pid: 402483|app: 0|req: 50/198] 172.105.184.153 () {28 vars in 382 bytes} [Tue Nov 12 03:05:47 2024] GET /dana-cached/hc/HostCheckerInstaller.osx => generated 2420 bytes in 6 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /start.pl
+[pid: 402483|app: 0|req: 51/199] 172.105.184.153 () {28 vars in 320 bytes} [Tue Nov 12 03:05:47 2024] GET /start.pl => generated 2327 bytes in 4 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /CSS/Miniweb.css
+[pid: 402481|app: 0|req: 51/200] 172.105.184.153 () {28 vars in 334 bytes} [Tue Nov 12 03:05:47 2024] GET /CSS/Miniweb.css => generated 2348 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /favicon.ico
+[pid: 402480|app: 0|req: 50/201] 172.105.184.153 () {28 vars in 326 bytes} [Tue Nov 12 03:05:47 2024] GET /favicon.ico => generated 2336 bytes in 8 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /dana-na/nc/nc_gina_ver.txt
+[pid: 402482|app: 0|req: 50/202] 172.105.184.153 () {28 vars in 356 bytes} [Tue Nov 12 03:05:47 2024] GET /dana-na/nc/nc_gina_ver.txt => generated 2381 bytes in 6 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /Portal0000.htm
+Not Found: /readme.txt
+[pid: 402481|app: 0|req: 52/203] 172.105.184.153 () {28 vars in 324 bytes} [Tue Nov 12 03:05:47 2024] GET /readme.txt => generated 2333 bytes in 4 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+[pid: 402480|app: 0|req: 51/204] 172.105.184.153 () {28 vars in 332 bytes} [Tue Nov 12 03:05:47 2024] GET /Portal0000.htm => generated 2345 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /+CSCOE+/logon.html
+[pid: 402482|app: 0|req: 51/205] 172.105.184.153 () {28 vars in 340 bytes} [Tue Nov 12 03:05:47 2024] GET /+CSCOE+/logon.html => generated 2357 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /.git/HEAD
+[pid: 402483|app: 0|req: 53/206] 172.105.184.153 () {28 vars in 322 bytes} [Tue Nov 12 03:05:47 2024] GET /.git/HEAD => generated 2330 bytes in 9 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /http:/www.google.com
+[pid: 402483|app: 0|req: 53/207] 172.105.184.153 () {24 vars in 287 bytes} [Tue Nov 12 03:05:47 2024] GET http://www.google.com => generated 1807 bytes in 9 msecs (HTTP/1.0 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /admin.shtml
+[pid: 402481|app: 0|req: 53/208] 172.105.184.153 () {28 vars in 326 bytes} [Tue Nov 12 03:05:48 2024] GET /admin.shtml => generated 2336 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /__Additional
+[pid: 402480|app: 0|req: 52/209] 172.105.184.153 () {28 vars in 328 bytes} [Tue Nov 12 03:05:48 2024] GET /__Additional => generated 2339 bytes in 4 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /CFIDE/componentutils/
+[pid: 402482|app: 0|req: 52/210] 172.105.184.153 () {28 vars in 344 bytes} [Tue Nov 12 03:05:48 2024] GET /CFIDE/componentutils/ => generated 2366 bytes in 6 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /http:/www.google.com
+[pid: 402481|app: 0|req: 54/211] 172.105.184.153 () {24 vars in 287 bytes} [Tue Nov 12 03:05:48 2024] HEAD http://www.google.com => generated 1808 bytes in 4 msecs (HTTP/1.0 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /admin.pl
+[pid: 402480|app: 0|req: 53/212] 172.105.184.153 () {28 vars in 319 bytes} [Tue Nov 12 03:05:48 2024] GET /admin.pl => generated 2327 bytes in 6 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /geoserver/index.html
+[pid: 402482|app: 0|req: 53/213] 172.105.184.153 () {28 vars in 343 bytes} [Tue Nov 12 03:05:48 2024] GET /geoserver/index.html => generated 2363 bytes in 4 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /www.google.com:80
+[pid: 402483|app: 0|req: 55/214] 172.105.184.153 () {22 vars in 256 bytes} [Tue Nov 12 03:05:48 2024] CONNECT www.google.com:80 => generated 1798 bytes in 8 msecs (HTTP/1.0 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /sdk
+[pid: 402483|app: 0|req: 55/215] 172.105.184.153 () {30 vars in 332 bytes} [Tue Nov 12 03:05:48 2024] POST /sdk => generated 2313 bytes in 9 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /admin.php
+[pid: 402481|app: 0|req: 55/216] 172.105.184.153 () {28 vars in 322 bytes} [Tue Nov 12 03:05:48 2024] GET /admin.php => generated 2330 bytes in 4 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /geoserver/
+[pid: 402480|app: 0|req: 54/217] 172.105.184.153 () {28 vars in 324 bytes} [Tue Nov 12 03:05:48 2024] GET /geoserver/ => generated 2333 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /inicio.asp
+[pid: 402482|app: 0|req: 54/218] 172.105.184.153 () {28 vars in 324 bytes} [Tue Nov 12 03:05:48 2024] GET /inicio.asp => generated 2333 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /geoserver/web/wicket/bookmarkable/org.geoserver.web.AboutGeoServerPage
+[pid: 402481|app: 0|req: 56/219] 172.105.184.153 () {28 vars in 444 bytes} [Tue Nov 12 03:05:48 2024] GET /geoserver/web/wicket/bookmarkable/org.geoserver.web.AboutGeoServerPage => generated 2513 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /index.html
+[pid: 402480|app: 0|req: 55/220] 172.105.184.153 () {28 vars in 324 bytes} [Tue Nov 12 03:05:48 2024] GET /index.html => generated 2333 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /geoserver/web/wicket/bookmarkable/org.geoserver.web.AboutGeoServerPage
+[pid: 402482|app: 0|req: 55/221] 172.105.184.153 () {28 vars in 444 bytes} [Tue Nov 12 03:05:48 2024] GET /geoserver/web/wicket/bookmarkable/org.geoserver.web.AboutGeoServerPage => generated 2513 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /inicio.shtml
+[pid: 402483|app: 0|req: 56/222] 172.105.184.153 () {28 vars in 328 bytes} [Tue Nov 12 03:05:48 2024] GET /inicio.shtml => generated 2339 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /Account/Login
+[pid: 402483|app: 0|req: 57/223] 172.105.184.153 () {28 vars in 330 bytes} [Tue Nov 12 03:05:48 2024] GET /Account/Login => generated 2342 bytes in 4 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /start.cgi
+[pid: 402481|app: 0|req: 57/224] 172.105.184.153 () {28 vars in 322 bytes} [Tue Nov 12 03:05:49 2024] GET /start.cgi => generated 2330 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /cgi-bin/info.cgi
+[pid: 402480|app: 0|req: 56/225] 172.105.184.153 () {28 vars in 336 bytes} [Tue Nov 12 03:05:49 2024] GET /cgi-bin/info.cgi => generated 2351 bytes in 4 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /localstart.jsa
+[pid: 402482|app: 0|req: 56/226] 172.105.184.153 () {28 vars in 332 bytes} [Tue Nov 12 03:05:49 2024] GET /localstart.jsa => generated 2345 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /xml/info.xml
+[pid: 402481|app: 0|req: 58/227] 172.105.184.153 () {28 vars in 328 bytes} [Tue Nov 12 03:05:49 2024] GET /xml/info.xml => generated 2339 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /admin.jsp
+[pid: 402480|app: 0|req: 57/228] 172.105.184.153 () {28 vars in 322 bytes} [Tue Nov 12 03:05:49 2024] GET /admin.jsp => generated 2330 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /magento_version
+[pid: 402482|app: 0|req: 57/229] 172.105.184.153 () {28 vars in 334 bytes} [Tue Nov 12 03:05:49 2024] GET /magento_version => generated 2348 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /index.pl
+[pid: 402483|app: 0|req: 58/230] 172.105.184.153 () {28 vars in 320 bytes} [Tue Nov 12 03:05:49 2024] GET /index.pl => generated 2327 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /api/v1/check-version
+[pid: 402483|app: 0|req: 59/231] 172.105.184.153 () {28 vars in 344 bytes} [Tue Nov 12 03:05:49 2024] GET /api/v1/check-version => generated 2363 bytes in 4 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /
+[pid: 402481|app: 0|req: 59/232] 172.105.184.153 () {28 vars in 375 bytes} [Tue Nov 12 03:05:49 2024] GET / => generated 2271 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /admin.cfm
+[pid: 402480|app: 0|req: 58/233] 172.105.184.153 () {28 vars in 322 bytes} [Tue Nov 12 03:05:49 2024] GET /admin.cfm => generated 2330 bytes in 4 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /fog/management/index.php
+[pid: 402482|app: 0|req: 58/234] 172.105.184.153 () {28 vars in 403 bytes} [Tue Nov 12 03:05:49 2024] GET /fog/management/index.php?node=client&sub=logininfo => generated 2405 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /main.jsa
+[pid: 402481|app: 0|req: 60/235] 172.105.184.153 () {28 vars in 320 bytes} [Tue Nov 12 03:05:49 2024] GET /main.jsa => generated 2327 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /menu.shtml
+[pid: 402480|app: 0|req: 59/236] 172.105.184.153 () {28 vars in 324 bytes} [Tue Nov 12 03:05:50 2024] GET /menu.shtml => generated 2333 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /localstart.php
+[pid: 402482|app: 0|req: 59/237] 172.105.184.153 () {28 vars in 331 bytes} [Tue Nov 12 03:05:50 2024] GET /localstart.php => generated 2345 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /index.jsa
+[pid: 402483|app: 0|req: 60/238] 172.105.184.153 () {28 vars in 321 bytes} [Tue Nov 12 03:05:50 2024] GET /index.jsa => generated 2330 bytes in 4 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /admin.asp
+[pid: 402483|app: 0|req: 61/239] 172.105.184.153 () {28 vars in 321 bytes} [Tue Nov 12 03:05:50 2024] GET /admin.asp => generated 2330 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /default.asp
+[pid: 402481|app: 0|req: 61/240] 172.105.184.153 () {28 vars in 325 bytes} [Tue Nov 12 03:05:50 2024] GET /default.asp => generated 2336 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /base.jsa
+[pid: 402480|app: 0|req: 60/241] 172.105.184.153 () {28 vars in 319 bytes} [Tue Nov 12 03:05:50 2024] GET /base.jsa => generated 2327 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /menu.cfm
+[pid: 402482|app: 0|req: 60/242] 172.105.184.153 () {28 vars in 320 bytes} [Tue Nov 12 03:05:51 2024] GET /menu.cfm => generated 2327 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /base.jhtml
+[pid: 402481|app: 0|req: 62/243] 172.105.184.153 () {28 vars in 324 bytes} [Tue Nov 12 03:05:51 2024] GET /base.jhtml => generated 2333 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /default.cfm
+[pid: 402480|app: 0|req: 61/244] 172.105.184.153 () {28 vars in 326 bytes} [Tue Nov 12 03:05:51 2024] GET /default.cfm => generated 2336 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /base.inc
+[pid: 402482|app: 0|req: 61/245] 172.105.184.153 () {28 vars in 320 bytes} [Tue Nov 12 03:05:51 2024] GET /base.inc => generated 2327 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /base.html
+[pid: 402483|app: 0|req: 62/246] 172.105.184.153 () {28 vars in 322 bytes} [Tue Nov 12 03:05:51 2024] GET /base.html => generated 2330 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /main.jhtml
+[pid: 402483|app: 0|req: 63/247] 172.105.184.153 () {28 vars in 324 bytes} [Tue Nov 12 03:05:51 2024] GET /main.jhtml => generated 2333 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /indice.shtml
+[pid: 402481|app: 0|req: 63/248] 172.105.184.153 () {28 vars in 328 bytes} [Tue Nov 12 03:05:52 2024] GET /indice.shtml => generated 2339 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /localstart.cfm
+[pid: 402480|app: 0|req: 62/249] 172.105.184.153 () {28 vars in 332 bytes} [Tue Nov 12 03:05:52 2024] GET /localstart.cfm => generated 2345 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /base.cfm
+[pid: 402482|app: 0|req: 62/250] 172.105.184.153 () {28 vars in 320 bytes} [Tue Nov 12 03:05:52 2024] GET /base.cfm => generated 2327 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /base.aspx
+[pid: 402481|app: 0|req: 64/251] 172.105.184.153 () {28 vars in 322 bytes} [Tue Nov 12 03:05:52 2024] GET /base.aspx => generated 2330 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /main.pl
+[pid: 402480|app: 0|req: 63/252] 172.105.184.153 () {28 vars in 318 bytes} [Tue Nov 12 03:05:52 2024] GET /main.pl => generated 2324 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /base.asp
+[pid: 402482|app: 0|req: 63/253] 172.105.184.153 () {28 vars in 320 bytes} [Tue Nov 12 03:05:52 2024] GET /base.asp => generated 2327 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /index.jsp
+[pid: 402483|app: 0|req: 64/254] 172.105.184.153 () {28 vars in 322 bytes} [Tue Nov 12 03:05:53 2024] GET /index.jsp => generated 2330 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /localstart.asp
+[pid: 402483|app: 0|req: 65/255] 172.105.184.153 () {28 vars in 332 bytes} [Tue Nov 12 03:05:53 2024] GET /localstart.asp => generated 2345 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /base.cgi
+[pid: 402481|app: 0|req: 65/256] 172.105.184.153 () {28 vars in 320 bytes} [Tue Nov 12 03:05:53 2024] GET /base.cgi => generated 2327 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /menu.php
+[pid: 402480|app: 0|req: 64/257] 172.105.184.153 () {28 vars in 320 bytes} [Tue Nov 12 03:05:53 2024] GET /menu.php => generated 2327 bytes in 15 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /main.cfm
+[pid: 402482|app: 0|req: 64/258] 172.105.184.153 () {28 vars in 320 bytes} [Tue Nov 12 03:05:53 2024] GET /main.cfm => generated 2327 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /indice.php
+[pid: 402481|app: 0|req: 66/259] 172.105.184.153 () {28 vars in 324 bytes} [Tue Nov 12 03:05:53 2024] GET /indice.php => generated 2333 bytes in 4 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /menu.cgi
+[pid: 402480|app: 0|req: 65/260] 172.105.184.153 () {28 vars in 320 bytes} [Tue Nov 12 03:05:54 2024] GET /menu.cgi => generated 2327 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /start.shtml
+[pid: 402482|app: 0|req: 65/261] 172.105.184.153 () {28 vars in 326 bytes} [Tue Nov 12 03:05:54 2024] GET /start.shtml => generated 2336 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /indice.aspx
+[pid: 402483|app: 0|req: 66/262] 172.105.184.153 () {28 vars in 326 bytes} [Tue Nov 12 03:05:54 2024] GET /indice.aspx => generated 2336 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /indice.jsp
+[pid: 402483|app: 0|req: 67/263] 172.105.184.153 () {28 vars in 324 bytes} [Tue Nov 12 03:05:54 2024] GET /indice.jsp => generated 2333 bytes in 14 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /inicio.jsa
+[pid: 402481|app: 0|req: 67/264] 172.105.184.153 () {28 vars in 324 bytes} [Tue Nov 12 03:05:54 2024] GET /inicio.jsa => generated 2333 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /localstart.html
+[pid: 402480|app: 0|req: 66/265] 172.105.184.153 () {28 vars in 334 bytes} [Tue Nov 12 03:05:54 2024] GET /localstart.html => generated 2348 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /main.html
+[pid: 402482|app: 0|req: 66/266] 172.105.184.153 () {28 vars in 322 bytes} [Tue Nov 12 03:05:55 2024] GET /main.html => generated 2330 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /home.jsp
+[pid: 402481|app: 0|req: 68/267] 172.105.184.153 () {28 vars in 319 bytes} [Tue Nov 12 03:05:55 2024] GET /home.jsp => generated 2327 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /menu.html
+[pid: 402480|app: 0|req: 67/268] 172.105.184.153 () {28 vars in 321 bytes} [Tue Nov 12 03:05:55 2024] GET /menu.html => generated 2330 bytes in 4 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /home.cgi
+[pid: 402482|app: 0|req: 67/269] 172.105.184.153 () {28 vars in 320 bytes} [Tue Nov 12 03:05:55 2024] GET /home.cgi => generated 2327 bytes in 14 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /indice.jhtml
+[pid: 402483|app: 0|req: 68/270] 172.105.184.153 () {28 vars in 328 bytes} [Tue Nov 12 03:05:55 2024] GET /indice.jhtml => generated 2339 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /index.cgi
+[pid: 402483|app: 0|req: 69/271] 172.105.184.153 () {28 vars in 322 bytes} [Tue Nov 12 03:05:56 2024] GET /index.cgi => generated 2330 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /indice.html
+[pid: 402481|app: 0|req: 69/272] 172.105.184.153 () {28 vars in 326 bytes} [Tue Nov 12 03:05:56 2024] GET /indice.html => generated 2336 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /start.asp
+[pid: 402480|app: 0|req: 68/273] 172.105.184.153 () {28 vars in 322 bytes} [Tue Nov 12 03:05:56 2024] GET /start.asp => generated 2330 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /home.aspx
+[pid: 402482|app: 0|req: 68/274] 172.105.184.153 () {28 vars in 322 bytes} [Tue Nov 12 03:05:56 2024] GET /home.aspx => generated 2330 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /inicio.aspx
+[pid: 402481|app: 0|req: 70/275] 172.105.184.153 () {28 vars in 326 bytes} [Tue Nov 12 03:05:56 2024] GET /inicio.aspx => generated 2336 bytes in 4 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /admin.html
+[pid: 402480|app: 0|req: 69/276] 172.105.184.153 () {28 vars in 324 bytes} [Tue Nov 12 03:05:56 2024] GET /admin.html => generated 2333 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /indice.asp
+[pid: 402482|app: 0|req: 69/277] 172.105.184.153 () {28 vars in 324 bytes} [Tue Nov 12 03:05:57 2024] GET /indice.asp => generated 2333 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /admin.jsa
+[pid: 402483|app: 0|req: 70/278] 172.105.184.153 () {28 vars in 322 bytes} [Tue Nov 12 03:05:57 2024] GET /admin.jsa => generated 2330 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /admin.aspx
+[pid: 402483|app: 0|req: 71/279] 172.105.184.153 () {28 vars in 324 bytes} [Tue Nov 12 03:05:57 2024] GET /admin.aspx => generated 2333 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /start.cfm
+[pid: 402481|app: 0|req: 71/280] 172.105.184.153 () {28 vars in 322 bytes} [Tue Nov 12 03:05:57 2024] GET /start.cfm => generated 2330 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /default.cgi
+[pid: 402480|app: 0|req: 70/281] 172.105.184.153 () {28 vars in 326 bytes} [Tue Nov 12 03:05:57 2024] GET /default.cgi => generated 2336 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /index.shtml
+[pid: 402482|app: 0|req: 70/282] 172.105.184.153 () {28 vars in 326 bytes} [Tue Nov 12 03:05:57 2024] GET /index.shtml => generated 2336 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /index.cfm
+[pid: 402481|app: 0|req: 72/283] 172.105.184.153 () {28 vars in 322 bytes} [Tue Nov 12 03:05:58 2024] GET /index.cfm => generated 2330 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /default.jsp
+[pid: 402480|app: 0|req: 71/284] 172.105.184.153 () {28 vars in 326 bytes} [Tue Nov 12 03:05:58 2024] GET /default.jsp => generated 2336 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /menu.jsa
+[pid: 402482|app: 0|req: 71/285] 172.105.184.153 () {28 vars in 320 bytes} [Tue Nov 12 03:05:58 2024] GET /menu.jsa => generated 2327 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /indice.jsa
+[pid: 402483|app: 0|req: 72/286] 172.105.184.153 () {28 vars in 324 bytes} [Tue Nov 12 03:05:58 2024] GET /indice.jsa => generated 2333 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /inicio.jhtml
+[pid: 402483|app: 0|req: 73/287] 172.105.184.153 () {28 vars in 328 bytes} [Tue Nov 12 03:05:58 2024] GET /inicio.jhtml => generated 2339 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /inicio.html
+[pid: 402481|app: 0|req: 73/288] 172.105.184.153 () {28 vars in 326 bytes} [Tue Nov 12 03:05:58 2024] GET /inicio.html => generated 2336 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /inicio.cgi
+[pid: 402480|app: 0|req: 72/289] 172.105.184.153 () {28 vars in 324 bytes} [Tue Nov 12 03:05:59 2024] GET /inicio.cgi => generated 2333 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /localstart.cgi
+[pid: 402482|app: 0|req: 72/290] 172.105.184.153 () {28 vars in 332 bytes} [Tue Nov 12 03:05:59 2024] GET /localstart.cgi => generated 2345 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /indice.cgi
+[pid: 402481|app: 0|req: 74/291] 172.105.184.153 () {28 vars in 324 bytes} [Tue Nov 12 03:05:59 2024] GET /indice.cgi => generated 2333 bytes in 4 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /localstart.shtml
+[pid: 402480|app: 0|req: 73/292] 172.105.184.153 () {28 vars in 336 bytes} [Tue Nov 12 03:05:59 2024] GET /localstart.shtml => generated 2351 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /localstart.pl
+[pid: 402482|app: 0|req: 73/293] 172.105.184.153 () {28 vars in 330 bytes} [Tue Nov 12 03:05:59 2024] GET /localstart.pl => generated 2342 bytes in 4 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /inicio.php
+[pid: 402483|app: 0|req: 74/294] 172.105.184.153 () {28 vars in 324 bytes} [Tue Nov 12 03:05:59 2024] GET /inicio.php => generated 2333 bytes in 4 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /index.aspx
+[pid: 402483|app: 0|req: 75/295] 172.105.184.153 () {28 vars in 324 bytes} [Tue Nov 12 03:06:00 2024] GET /index.aspx => generated 2333 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /home.shtml
+[pid: 402481|app: 0|req: 75/296] 172.105.184.153 () {28 vars in 324 bytes} [Tue Nov 12 03:06:00 2024] GET /home.shtml => generated 2333 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /default.html
+[pid: 402480|app: 0|req: 74/297] 172.105.184.153 () {28 vars in 328 bytes} [Tue Nov 12 03:06:00 2024] GET /default.html => generated 2339 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /default.pl
+[pid: 402482|app: 0|req: 74/298] 172.105.184.153 () {28 vars in 322 bytes} [Tue Nov 12 03:06:00 2024] GET /default.pl => generated 2333 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /localstart.jsp
+[pid: 402481|app: 0|req: 76/299] 172.105.184.153 () {28 vars in 331 bytes} [Tue Nov 12 03:06:00 2024] GET /localstart.jsp => generated 2345 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /start.jhtml
+[pid: 402480|app: 0|req: 75/300] 172.105.184.153 () {28 vars in 325 bytes} [Tue Nov 12 03:06:00 2024] GET /start.jhtml => generated 2336 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /localstart.jhtml
+[pid: 402482|app: 0|req: 75/301] 172.105.184.153 () {28 vars in 335 bytes} [Tue Nov 12 03:06:00 2024] GET /localstart.jhtml => generated 2351 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /localstart.aspx
+[pid: 402483|app: 0|req: 76/302] 172.105.184.153 () {28 vars in 334 bytes} [Tue Nov 12 03:06:01 2024] GET /localstart.aspx => generated 2348 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /home.html
+[pid: 402483|app: 0|req: 77/303] 172.105.184.153 () {28 vars in 322 bytes} [Tue Nov 12 03:06:01 2024] GET /home.html => generated 2330 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /start.php
+[pid: 402481|app: 0|req: 77/304] 172.105.184.153 () {28 vars in 322 bytes} [Tue Nov 12 03:06:01 2024] GET /start.php => generated 2330 bytes in 4 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /main.aspx
+[pid: 402480|app: 0|req: 76/305] 172.105.184.153 () {28 vars in 322 bytes} [Tue Nov 12 03:06:01 2024] GET /main.aspx => generated 2330 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /index.php
+[pid: 402482|app: 0|req: 76/306] 172.105.184.153 () {28 vars in 322 bytes} [Tue Nov 12 03:06:01 2024] GET /index.php => generated 2330 bytes in 4 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /home.jhtml
+[pid: 402481|app: 0|req: 78/307] 172.105.184.153 () {28 vars in 324 bytes} [Tue Nov 12 03:06:01 2024] GET /home.jhtml => generated 2333 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /start.jsp
+[pid: 402480|app: 0|req: 77/308] 172.105.184.153 () {28 vars in 322 bytes} [Tue Nov 12 03:06:01 2024] GET /start.jsp => generated 2330 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /default.jhtml
+[pid: 402482|app: 0|req: 77/309] 172.105.184.153 () {28 vars in 330 bytes} [Tue Nov 12 03:06:01 2024] GET /default.jhtml => generated 2342 bytes in 4 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /menu.jhtml
+[pid: 402483|app: 0|req: 78/310] 172.105.184.153 () {28 vars in 324 bytes} [Tue Nov 12 03:06:01 2024] GET /menu.jhtml => generated 2333 bytes in 4 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /default.php
+[pid: 402483|app: 0|req: 79/311] 172.105.184.153 () {28 vars in 326 bytes} [Tue Nov 12 03:06:01 2024] GET /default.php => generated 2336 bytes in 4 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /inicio.jsp
+[pid: 402481|app: 0|req: 79/312] 172.105.184.153 () {28 vars in 324 bytes} [Tue Nov 12 03:06:01 2024] GET /inicio.jsp => generated 2333 bytes in 4 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /indice.cfm
+[pid: 402480|app: 0|req: 78/313] 172.105.184.153 () {28 vars in 324 bytes} [Tue Nov 12 03:06:01 2024] GET /indice.cfm => generated 2333 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /start.aspx
+[pid: 402482|app: 0|req: 78/314] 172.105.184.153 () {28 vars in 324 bytes} [Tue Nov 12 03:06:01 2024] GET /start.aspx => generated 2333 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /start.html
+[pid: 402481|app: 0|req: 80/315] 172.105.184.153 () {28 vars in 324 bytes} [Tue Nov 12 03:06:01 2024] GET /start.html => generated 2333 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /admin.jhtml
+[pid: 402480|app: 0|req: 79/316] 172.105.184.153 () {28 vars in 326 bytes} [Tue Nov 12 03:06:02 2024] GET /admin.jhtml => generated 2336 bytes in 4 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /default.aspx
+[pid: 402482|app: 0|req: 79/317] 172.105.184.153 () {28 vars in 328 bytes} [Tue Nov 12 03:06:02 2024] GET /default.aspx => generated 2339 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /index.asp
+[pid: 402483|app: 0|req: 80/318] 172.105.184.153 () {28 vars in 322 bytes} [Tue Nov 12 03:06:02 2024] GET /index.asp => generated 2330 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /base.shtml
+[pid: 402483|app: 0|req: 81/319] 172.105.184.153 () {28 vars in 324 bytes} [Tue Nov 12 03:06:02 2024] GET /base.shtml => generated 2333 bytes in 4 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /main.cgi
+[pid: 402481|app: 0|req: 81/320] 172.105.184.153 () {28 vars in 320 bytes} [Tue Nov 12 03:06:02 2024] GET /main.cgi => generated 2327 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /default.asp
+[pid: 402480|app: 0|req: 80/321] 172.105.184.153 () {28 vars in 324 bytes} [Tue Nov 12 03:06:02 2024] GET default.asp => generated 1781 bytes in 4 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /home.php
+[pid: 402482|app: 0|req: 80/322] 172.105.184.153 () {28 vars in 320 bytes} [Tue Nov 12 03:06:02 2024] GET /home.php => generated 2327 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /main.asp
+[pid: 402481|app: 0|req: 82/323] 172.105.184.153 () {28 vars in 319 bytes} [Tue Nov 12 03:06:02 2024] GET /main.asp => generated 2327 bytes in 4 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /home.pl
+[pid: 402480|app: 0|req: 81/324] 172.105.184.153 () {28 vars in 317 bytes} [Tue Nov 12 03:06:02 2024] GET /home.pl => generated 2324 bytes in 4 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /index.jhtml
+[pid: 402482|app: 0|req: 81/325] 172.105.184.153 () {28 vars in 325 bytes} [Tue Nov 12 03:06:02 2024] GET /index.jhtml => generated 2336 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /menu.jsp
+[pid: 402483|app: 0|req: 82/326] 172.105.184.153 () {28 vars in 320 bytes} [Tue Nov 12 03:06:02 2024] GET /menu.jsp => generated 2327 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /main.shtml
+[pid: 402483|app: 0|req: 83/327] 172.105.184.153 () {28 vars in 324 bytes} [Tue Nov 12 03:06:02 2024] GET /main.shtml => generated 2333 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /home.asp
+[pid: 402481|app: 0|req: 83/328] 172.105.184.153 () {28 vars in 320 bytes} [Tue Nov 12 03:06:02 2024] GET /home.asp => generated 2327 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /
+[pid: 402480|app: 0|req: 82/329] 172.105.184.153 () {22 vars in 220 bytes} [Tue Nov 12 03:06:05 2024] GET / => generated 2280 bytes in 5 msecs (HTTP/1.0 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /
+[pid: 402482|app: 0|req: 82/330] 172.105.184.153 () {24 vars in 245 bytes} [Tue Nov 12 03:06:05 2024] GET / => generated 2280 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /80.66.83.47:80
+[pid: 402481|app: 0|req: 84/331] 80.66.83.47 () {24 vars in 273 bytes} [Tue Nov 12 03:20:08 2024] CONNECT 80.66.83.47:80 => generated 1791 bytes in 26 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /
+[pid: 402480|app: 0|req: 83/332] 168.138.5.55 () {48 vars in 888 bytes} [Tue Nov 12 03:56:41 2024] GET / => generated 2287 bytes in 41 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /
+[pid: 402482|app: 0|req: 83/333] 205.210.31.2 () {28 vars in 562 bytes} [Tue Nov 12 04:04:34 2024] GET / => generated 2285 bytes in 11 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /example.com:443
+[pid: 402483|app: 0|req: 84/334] 154.213.184.18 () {26 vars in 316 bytes} [Tue Nov 12 04:48:13 2024] CONNECT example.com:443 => generated 1795 bytes in 42 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /
+[pid: 402483|app: 0|req: 85/335] 198.235.24.245 () {28 vars in 297 bytes} [Tue Nov 12 07:08:09 2024] GET / => generated 2285 bytes in 53 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /
+[pid: 402481|app: 0|req: 85/336] 185.191.126.248 () {24 vars in 250 bytes} [Tue Nov 12 07:32:24 2024] GET / => generated 2285 bytes in 42 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /
+[pid: 402480|app: 0|req: 84/337] 168.138.5.55 () {38 vars in 517 bytes} [Tue Nov 12 07:36:55 2024] GET / => generated 2288 bytes in 8 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /
+[pid: 402482|app: 0|req: 84/338] 168.138.5.55 () {38 vars in 513 bytes} [Tue Nov 12 07:44:48 2024] GET / => generated 2287 bytes in 10 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /
+[pid: 402481|app: 0|req: 86/339] 168.138.5.55 () {36 vars in 538 bytes} [Tue Nov 12 08:02:09 2024] GET / => generated 2288 bytes in 36 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /
+[pid: 402480|app: 0|req: 85/340] 168.138.5.55 () {34 vars in 406 bytes} [Tue Nov 12 08:02:13 2024] GET / => generated 2288 bytes in 6 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /
+[pid: 402482|app: 0|req: 85/341] 168.138.5.55 () {34 vars in 404 bytes} [Tue Nov 12 08:02:13 2024] GET / => generated 2287 bytes in 6 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /
+[pid: 402483|app: 0|req: 86/342] 168.138.5.55 () {36 vars in 562 bytes} [Tue Nov 12 08:02:14 2024] GET / => generated 2287 bytes in 6 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /server
+[pid: 402483|app: 0|req: 87/343] 168.138.5.55 () {38 vars in 481 bytes} [Tue Nov 12 08:02:14 2024] GET /server => generated 2323 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /version
+[pid: 402481|app: 0|req: 87/344] 168.138.5.55 () {38 vars in 483 bytes} [Tue Nov 12 08:02:15 2024] GET /version => generated 2326 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /.vscode/sftp.json
+[pid: 402480|app: 0|req: 86/345] 168.138.5.55 () {38 vars in 503 bytes} [Tue Nov 12 08:02:16 2024] GET /.vscode/sftp.json => generated 2356 bytes in 6 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /about
+[pid: 402482|app: 0|req: 86/346] 168.138.5.55 () {38 vars in 479 bytes} [Tue Nov 12 08:02:16 2024] GET /about => generated 2320 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /debug/default/view
+[pid: 402481|app: 0|req: 88/347] 168.138.5.55 () {38 vars in 530 bytes} [Tue Nov 12 08:02:17 2024] GET /debug/default/view?panel=config => generated 2372 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /v2/_catalog
+[pid: 402480|app: 0|req: 87/348] 168.138.5.55 () {40 vars in 522 bytes} [Tue Nov 12 08:02:17 2024] GET /v2/_catalog => generated 2338 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /ecp/Current/exporttool/microsoft.exchange.ediscovery.exporttool.application
+[pid: 402482|app: 0|req: 87/349] 168.138.5.55 () {38 vars in 619 bytes} [Tue Nov 12 08:02:18 2024] GET /ecp/Current/exporttool/microsoft.exchange.ediscovery.exporttool.application => generated 2530 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /server-status
+[pid: 402483|app: 0|req: 88/350] 168.138.5.55 () {38 vars in 495 bytes} [Tue Nov 12 08:02:19 2024] GET /server-status => generated 2344 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /login.action
+[pid: 402483|app: 0|req: 89/351] 168.138.5.55 () {38 vars in 493 bytes} [Tue Nov 12 08:02:19 2024] GET /login.action => generated 2341 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /_all_dbs
+[pid: 402481|app: 0|req: 89/352] 168.138.5.55 () {40 vars in 569 bytes} [Tue Nov 12 08:02:20 2024] GET /_all_dbs => generated 2329 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /
+[pid: 402480|app: 0|req: 88/353] 168.138.5.55 () {36 vars in 564 bytes} [Tue Nov 12 08:02:20 2024] GET / => generated 2288 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /.DS_Store
+[pid: 402482|app: 0|req: 88/354] 168.138.5.55 () {38 vars in 487 bytes} [Tue Nov 12 08:02:21 2024] GET /.DS_Store => generated 2332 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /.env
+[pid: 402481|app: 0|req: 90/355] 168.138.5.55 () {38 vars in 477 bytes} [Tue Nov 12 08:02:21 2024] GET /.env => generated 2317 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /server
+[pid: 402480|app: 0|req: 89/356] 168.138.5.55 () {38 vars in 483 bytes} [Tue Nov 12 08:02:21 2024] GET /server => generated 2324 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /.git/config
+[pid: 402482|app: 0|req: 89/357] 168.138.5.55 () {38 vars in 491 bytes} [Tue Nov 12 08:02:22 2024] GET /.git/config => generated 2338 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /version
+[pid: 402483|app: 0|req: 90/358] 168.138.5.55 () {38 vars in 485 bytes} [Tue Nov 12 08:02:22 2024] GET /version => generated 2327 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /s/5353e253e2833313e2836313/_/;/META-INF/maven/com.atlassian.jira/jira-webapp-dist/pom.properties
+[pid: 402483|app: 0|req: 91/359] 168.138.5.55 () {38 vars in 661 bytes} [Tue Nov 12 08:02:22 2024] GET /s/5353e253e2833313e2836313/_/;/META-INF/maven/com.atlassian.jira/jira-webapp-dist/pom.properties => generated 2595 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /config.json
+[pid: 402481|app: 0|req: 91/360] 168.138.5.55 () {38 vars in 491 bytes} [Tue Nov 12 08:02:23 2024] GET /config.json => generated 2338 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /.vscode/sftp.json
+[pid: 402480|app: 0|req: 90/361] 168.138.5.55 () {38 vars in 505 bytes} [Tue Nov 12 08:02:23 2024] GET /.vscode/sftp.json => generated 2357 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /telescope/requests
+[pid: 402482|app: 0|req: 90/362] 168.138.5.55 () {38 vars in 505 bytes} [Tue Nov 12 08:02:24 2024] GET /telescope/requests => generated 2359 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /about
+[pid: 402481|app: 0|req: 92/363] 168.138.5.55 () {38 vars in 481 bytes} [Tue Nov 12 08:02:24 2024] GET /about => generated 2321 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /
+[pid: 402480|app: 0|req: 91/364] 168.138.5.55 () {38 vars in 517 bytes} [Tue Nov 12 08:02:24 2024] GET /?rest_route=/wp/v2/users/ => generated 2312 bytes in 4 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /debug/default/view
+[pid: 402482|app: 0|req: 91/365] 168.138.5.55 () {38 vars in 531 bytes} [Tue Nov 12 08:02:25 2024] GET /debug/default/view?panel=config => generated 2373 bytes in 4 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /v2/_catalog
+[pid: 402483|app: 0|req: 92/366] 168.138.5.55 () {40 vars in 523 bytes} [Tue Nov 12 08:02:26 2024] GET /v2/_catalog => generated 2339 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /ecp/Current/exporttool/microsoft.exchange.ediscovery.exporttool.application
+[pid: 402483|app: 0|req: 93/367] 168.138.5.55 () {38 vars in 620 bytes} [Tue Nov 12 08:02:27 2024] GET /ecp/Current/exporttool/microsoft.exchange.ediscovery.exporttool.application => generated 2531 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /server-status
+[pid: 402481|app: 0|req: 93/368] 168.138.5.55 () {38 vars in 497 bytes} [Tue Nov 12 08:02:28 2024] GET /server-status => generated 2345 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /login.action
+[pid: 402480|app: 0|req: 92/369] 168.138.5.55 () {38 vars in 495 bytes} [Tue Nov 12 08:02:29 2024] GET /login.action => generated 2342 bytes in 4 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /_all_dbs
+[pid: 402482|app: 0|req: 92/370] 168.138.5.55 () {40 vars in 571 bytes} [Tue Nov 12 08:02:30 2024] GET /_all_dbs => generated 2330 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /.DS_Store
+[pid: 402481|app: 0|req: 94/371] 168.138.5.55 () {38 vars in 489 bytes} [Tue Nov 12 08:02:31 2024] GET /.DS_Store => generated 2333 bytes in 4 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /.env
+[pid: 402480|app: 0|req: 93/372] 168.138.5.55 () {38 vars in 479 bytes} [Tue Nov 12 08:02:32 2024] GET /.env => generated 2318 bytes in 4 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /.git/config
+[pid: 402482|app: 0|req: 93/373] 168.138.5.55 () {38 vars in 493 bytes} [Tue Nov 12 08:02:33 2024] GET /.git/config => generated 2339 bytes in 4 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /s/5353e253e2833313e2836313/_/;/META-INF/maven/com.atlassian.jira/jira-webapp-dist/pom.properties
+[pid: 402483|app: 0|req: 94/374] 168.138.5.55 () {38 vars in 663 bytes} [Tue Nov 12 08:02:34 2024] GET /s/5353e253e2833313e2836313/_/;/META-INF/maven/com.atlassian.jira/jira-webapp-dist/pom.properties => generated 2596 bytes in 4 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /config.json
+[pid: 402483|app: 0|req: 95/375] 168.138.5.55 () {38 vars in 493 bytes} [Tue Nov 12 08:02:35 2024] GET /config.json => generated 2339 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /telescope/requests
+[pid: 402481|app: 0|req: 95/376] 168.138.5.55 () {38 vars in 507 bytes} [Tue Nov 12 08:02:35 2024] GET /telescope/requests => generated 2360 bytes in 4 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /
+[pid: 402480|app: 0|req: 94/377] 168.138.5.55 () {38 vars in 520 bytes} [Tue Nov 12 08:02:36 2024] GET /?rest_route=/wp/v2/users/ => generated 2313 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /
+[pid: 402482|app: 0|req: 94/378] 168.138.5.55 () {46 vars in 816 bytes} [Tue Nov 12 08:04:06 2024] GET / => generated 2287 bytes in 6 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /
+[pid: 402481|app: 0|req: 96/379] 168.138.5.55 () {52 vars in 906 bytes} [Tue Nov 12 08:04:11 2024] GET / => generated 2287 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /
+[pid: 402480|app: 0|req: 95/380] 168.138.5.55 () {46 vars in 817 bytes} [Tue Nov 12 08:11:30 2024] GET / => generated 2287 bytes in 8 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /
+[pid: 402482|app: 0|req: 95/381] 95.214.53.211 () {36 vars in 506 bytes} [Tue Nov 12 08:31:36 2024] GET / => generated 2285 bytes in 37 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /example.com:443
+[pid: 402483|app: 0|req: 96/382] 154.213.184.18 () {26 vars in 316 bytes} [Tue Nov 12 08:53:56 2024] CONNECT example.com:443 => generated 1795 bytes in 34 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /
+[pid: 402483|app: 0|req: 97/383] 45.58.159.229 () {30 vars in 424 bytes} [Tue Nov 12 08:58:13 2024] GET / => generated 2285 bytes in 9 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /login
+[pid: 402481|app: 0|req: 97/384] 45.58.159.229 () {30 vars in 434 bytes} [Tue Nov 12 08:58:14 2024] GET /login => generated 2318 bytes in 6 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /tactics
+[pid: 402480|app: 0|req: 96/385] 168.138.5.55 () {44 vars in 819 bytes} [Tue Nov 12 09:00:09 2024] GET /tactics?page=23 => generated 2335 bytes in 6 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /
+[pid: 402482|app: 0|req: 96/386] 168.138.5.55 () {46 vars in 657 bytes} [Tue Nov 12 09:02:07 2024] GET / => generated 2289 bytes in 7 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /
+[pid: 402481|app: 0|req: 98/387] 168.138.5.55 () {46 vars in 651 bytes} [Tue Nov 12 09:02:07 2024] GET / => generated 2289 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /
+[pid: 402480|app: 0|req: 97/388] 168.138.5.55 () {46 vars in 619 bytes} [Tue Nov 12 09:02:07 2024] GET / => generated 2289 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /
+[pid: 402482|app: 0|req: 97/389] 168.138.5.55 () {48 vars in 812 bytes} [Tue Nov 12 09:02:08 2024] GET / => generated 2289 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /
+[pid: 402483|app: 0|req: 98/390] 168.138.5.55 () {48 vars in 779 bytes} [Tue Nov 12 09:02:08 2024] GET / => generated 2289 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /
+[pid: 402483|app: 0|req: 99/391] 168.138.5.55 () {48 vars in 804 bytes} [Tue Nov 12 09:02:08 2024] GET / => generated 2289 bytes in 4 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /server
+[pid: 402481|app: 0|req: 99/392] 168.138.5.55 () {48 vars in 670 bytes} [Tue Nov 12 09:02:09 2024] GET /server => generated 2325 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /version
+[pid: 402480|app: 0|req: 98/393] 168.138.5.55 () {48 vars in 672 bytes} [Tue Nov 12 09:02:09 2024] GET /version => generated 2328 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /.vscode/sftp.json
+[pid: 402482|app: 0|req: 98/394] 168.138.5.55 () {48 vars in 690 bytes} [Tue Nov 12 09:02:10 2024] GET /.vscode/sftp.json => generated 2358 bytes in 4 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /about
+[pid: 402481|app: 0|req: 100/395] 168.138.5.55 () {48 vars in 668 bytes} [Tue Nov 12 09:02:11 2024] GET /about => generated 2322 bytes in 4 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /debug/default/view
+[pid: 402480|app: 0|req: 99/396] 168.138.5.55 () {48 vars in 717 bytes} [Tue Nov 12 09:02:12 2024] GET /debug/default/view?panel=config => generated 2374 bytes in 4 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /v2/_catalog
+[pid: 402482|app: 0|req: 99/397] 168.138.5.55 () {50 vars in 709 bytes} [Tue Nov 12 09:02:13 2024] GET /v2/_catalog => generated 2340 bytes in 4 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /ecp/Current/exporttool/microsoft.exchange.ediscovery.exporttool.application
+[pid: 402483|app: 0|req: 100/398] 168.138.5.55 () {48 vars in 808 bytes} [Tue Nov 12 09:02:13 2024] GET /ecp/Current/exporttool/microsoft.exchange.ediscovery.exporttool.application => generated 2532 bytes in 4 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /server-status
+[pid: 402483|app: 0|req: 101/399] 168.138.5.55 () {48 vars in 684 bytes} [Tue Nov 12 09:02:14 2024] GET /server-status => generated 2346 bytes in 7 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /login.action
+[pid: 402481|app: 0|req: 101/400] 168.138.5.55 () {48 vars in 680 bytes} [Tue Nov 12 09:02:15 2024] GET /login.action => generated 2343 bytes in 4 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /_all_dbs
+[pid: 402480|app: 0|req: 100/401] 168.138.5.55 () {50 vars in 758 bytes} [Tue Nov 12 09:02:16 2024] GET /_all_dbs => generated 2331 bytes in 4 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /.DS_Store
+[pid: 402482|app: 0|req: 100/402] 168.138.5.55 () {48 vars in 676 bytes} [Tue Nov 12 09:02:16 2024] GET /.DS_Store => generated 2334 bytes in 4 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /.env
+[pid: 402481|app: 0|req: 102/403] 168.138.5.55 () {48 vars in 662 bytes} [Tue Nov 12 09:02:17 2024] GET /.env => generated 2319 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /.git/config
+[pid: 402480|app: 0|req: 101/404] 168.138.5.55 () {48 vars in 677 bytes} [Tue Nov 12 09:02:18 2024] GET /.git/config => generated 2340 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /s/33e27393e2431313e2838313/_/;/META-INF/maven/com.atlassian.jira/jira-webapp-dist/pom.properties
+[pid: 402482|app: 0|req: 101/405] 168.138.5.55 () {48 vars in 848 bytes} [Tue Nov 12 09:02:19 2024] GET /s/33e27393e2431313e2838313/_/;/META-INF/maven/com.atlassian.jira/jira-webapp-dist/pom.properties => generated 2597 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /config.json
+[pid: 402483|app: 0|req: 102/406] 168.138.5.55 () {48 vars in 680 bytes} [Tue Nov 12 09:02:20 2024] GET /config.json => generated 2340 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /telescope/requests
+[pid: 402483|app: 0|req: 103/407] 168.138.5.55 () {48 vars in 694 bytes} [Tue Nov 12 09:02:21 2024] GET /telescope/requests => generated 2361 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /
+[pid: 402481|app: 0|req: 103/408] 168.138.5.55 () {48 vars in 707 bytes} [Tue Nov 12 09:02:21 2024] GET /?rest_route=/wp/v2/users/ => generated 2314 bytes in 4 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /
+[pid: 402480|app: 0|req: 102/409] 168.138.5.55 () {50 vars in 774 bytes} [Tue Nov 12 09:02:23 2024] HEAD / => generated 2290 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /
+[pid: 402482|app: 0|req: 102/410] 168.138.5.55 () {72 vars in 1275 bytes} [Tue Nov 12 09:03:48 2024] GET / => generated 2289 bytes in 7 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /
+[pid: 402481|app: 0|req: 104/411] 168.138.5.55 () {66 vars in 1133 bytes} [Tue Nov 12 09:03:56 2024] GET / => generated 2289 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /
+[pid: 402480|app: 0|req: 103/412] 168.138.5.55 () {62 vars in 1081 bytes} [Tue Nov 12 09:04:36 2024] GET / => generated 2289 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /
+[pid: 402482|app: 0|req: 103/413] 168.138.5.55 () {60 vars in 1150 bytes} [Tue Nov 12 09:06:05 2024] GET / => generated 2288 bytes in 4 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /favicon.ico
+[pid: 402483|app: 0|req: 104/414] 168.138.5.55 () {60 vars in 1172 bytes} [Tue Nov 12 09:06:05 2024] GET /favicon.ico => generated 2339 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /
+[pid: 402483|app: 0|req: 105/415] 168.138.5.55 () {72 vars in 1275 bytes} [Tue Nov 12 09:08:48 2024] GET / => generated 2289 bytes in 6 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /
+[pid: 402481|app: 0|req: 105/416] 103.203.57.20 () {30 vars in 330 bytes} [Tue Nov 12 09:15:20 2024] GET / => generated 2285 bytes in 12 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /
+[pid: 402480|app: 0|req: 104/417] 168.138.5.55 () {70 vars in 1319 bytes} [Tue Nov 12 10:24:40 2024] GET / => generated 2289 bytes in 41 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /favicon.ico
+[pid: 402482|app: 0|req: 104/418] 168.138.5.55 () {70 vars in 1339 bytes} [Tue Nov 12 10:24:41 2024] GET /favicon.ico => generated 2340 bytes in 6 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /api/tushare/basics/
+[pid: 402481|app: 0|req: 106/419] 207.211.146.175 () {34 vars in 469 bytes} [Tue Nov 12 10:36:06 2024] GET /api/tushare/basics/ => generated 2360 bytes in 12 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /api/tushare/basic/
+[pid: 402480|app: 0|req: 105/420] 207.211.146.175 () {34 vars in 467 bytes} [Tue Nov 12 10:36:33 2024] GET /api/tushare/basic/ => generated 2357 bytes in 11 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+[pid: 402482|app: 0|req: 105/421] 207.211.146.175 () {34 vars in 480 bytes} [Tue Nov 12 10:37:02 2024] GET /api/basics/tushare/basic/ => generated 1033927 bytes in 323 msecs (HTTP/1.1 200) 8 headers in 260 bytes (1 switches on core 0)
+Not Found: /
+[pid: 402483|app: 0|req: 106/422] 198.235.24.124 () {28 vars in 297 bytes} [Tue Nov 12 10:46:48 2024] GET / => generated 2285 bytes in 26 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /
+[pid: 402483|app: 0|req: 107/423] 147.185.132.171 () {28 vars in 566 bytes} [Tue Nov 12 11:47:08 2024] GET / => generated 2285 bytes in 42 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /_vti_pvt/authors.pwd
+[pid: 402481|app: 0|req: 107/424] 168.138.5.55 () {48 vars in 702 bytes} [Tue Nov 12 11:58:39 2024] GET /_vti_pvt/authors.pwd => generated 2367 bytes in 20 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /.aws/credentials
+[pid: 402480|app: 0|req: 106/425] 168.138.5.55 () {48 vars in 694 bytes} [Tue Nov 12 11:58:39 2024] GET /.aws/credentials => generated 2355 bytes in 7 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /backup.sql
+[pid: 402481|app: 0|req: 108/426] 168.138.5.55 () {48 vars in 682 bytes} [Tue Nov 12 11:58:39 2024] GET /backup.sql => generated 2337 bytes in 6 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /backup.tar.gz
+[pid: 402482|app: 0|req: 106/427] 168.138.5.55 () {48 vars in 690 bytes} [Tue Nov 12 11:58:39 2024] GET /backup.tar.gz => generated 2346 bytes in 10 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /database.sql
+[pid: 402483|app: 0|req: 108/428] 168.138.5.55 () {48 vars in 685 bytes} [Tue Nov 12 11:58:39 2024] GET /database.sql => generated 2343 bytes in 6 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /.ssh/id_ed25519
+Not Found: /cloud-config.yml
+[pid: 402482|app: 0|req: 107/430] 168.138.5.55 () {48 vars in 693 bytes} [Tue Nov 12 11:58:39 2024] GET /cloud-config.yml => generated 2355 bytes in 9 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+[pid: 402480|app: 0|req: 107/430] 168.138.5.55 () {48 vars in 692 bytes} [Tue Nov 12 11:58:39 2024] GET /.ssh/id_ed25519 => generated 2352 bytes in 12 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /backup.zip
+[pid: 402483|app: 0|req: 109/431] 168.138.5.55 () {48 vars in 681 bytes} [Tue Nov 12 11:58:39 2024] GET /backup.zip => generated 2337 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /config.xml
+[pid: 402481|app: 0|req: 109/432] 168.138.5.55 () {48 vars in 681 bytes} [Tue Nov 12 11:58:39 2024] GET /config.xml => generated 2337 bytes in 19 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /config.yml
+[pid: 402481|app: 0|req: 110/433] 168.138.5.55 () {48 vars in 682 bytes} [Tue Nov 12 11:58:39 2024] GET /config.yml => generated 2337 bytes in 6 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /config.json
+[pid: 402480|app: 0|req: 108/434] 168.138.5.55 () {48 vars in 683 bytes} [Tue Nov 12 11:58:39 2024] GET /config.json => generated 2340 bytes in 9 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /_vti_pvt/administrators.pwd
+[pid: 402482|app: 0|req: 108/435] 168.138.5.55 () {48 vars in 718 bytes} [Tue Nov 12 11:58:39 2024] GET /_vti_pvt/administrators.pwd => generated 2388 bytes in 7 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /.env
+[pid: 402483|app: 0|req: 110/436] 168.138.5.55 () {48 vars in 672 bytes} [Tue Nov 12 11:58:39 2024] GET /.env => generated 2319 bytes in 7 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /docker-compose.yml
+[pid: 402480|app: 0|req: 109/437] 168.138.5.55 () {48 vars in 700 bytes} [Tue Nov 12 11:58:39 2024] GET /docker-compose.yml => generated 2361 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /
+[pid: 402482|app: 0|req: 109/438] 168.138.5.55 () {48 vars in 662 bytes} [Tue Nov 12 11:58:39 2024] GET / => generated 2289 bytes in 6 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /.env.production
+[pid: 402483|app: 0|req: 111/439] 168.138.5.55 () {48 vars in 694 bytes} [Tue Nov 12 11:58:39 2024] GET /.env.production => generated 2352 bytes in 6 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /.vscode/sftp.json
+[pid: 402481|app: 0|req: 112/440] 168.138.5.55 () {48 vars in 698 bytes} [Tue Nov 12 11:58:39 2024] GET /.vscode/sftp.json => generated 2358 bytes in 20 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /etc/shadow
+Not Found: /dump.sql
+[pid: 402480|app: 0|req: 111/442] 168.138.5.55 () {48 vars in 680 bytes} [Tue Nov 12 11:58:39 2024] GET /dump.sql => generated 2331 bytes in 27 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /_vti_pvt/service.pwd
+[pid: 402482|app: 0|req: 111/443] 168.138.5.55 () {48 vars in 704 bytes} [Tue Nov 12 11:58:39 2024] GET /_vti_pvt/service.pwd => generated 2367 bytes in 16 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /config.yaml
+[pid: 402481|app: 0|req: 113/444] 168.138.5.55 () {48 vars in 680 bytes} [Tue Nov 12 11:58:39 2024] GET /config.yaml => generated 2340 bytes in 33 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /web.config
+[pid: 402483|app: 0|req: 113/445] 168.138.5.55 () {48 vars in 682 bytes} [Tue Nov 12 11:58:39 2024] GET /web.config => generated 2337 bytes in 27 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+[pid: 402483|app: 0|req: 114/445] 168.138.5.55 () {48 vars in 682 bytes} [Tue Nov 12 11:58:39 2024] GET /etc/shadow => generated 2337 bytes in 8 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /config/production.json
+[pid: 402482|app: 0|req: 112/446] 168.138.5.55 () {48 vars in 708 bytes} [Tue Nov 12 11:58:39 2024] GET /config/production.json => generated 2373 bytes in 36 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /user_secrets.yml
+[pid: 402481|app: 0|req: 114/447] 168.138.5.55 () {48 vars in 696 bytes} [Tue Nov 12 11:58:39 2024] GET /user_secrets.yml => generated 2355 bytes in 22 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /.git/HEAD
+Not Found: /feed
+[pid: 402480|app: 0|req: 112/448] 168.138.5.55 () {48 vars in 674 bytes} [Tue Nov 12 11:58:39 2024] GET /feed => generated 2319 bytes in 31 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /etc/ssl/private/server.key
+[pid: 402480|app: 0|req: 112/449] 168.138.5.55 () {48 vars in 714 bytes} [Tue Nov 12 11:58:39 2024] GET /etc/ssl/private/server.key => generated 2385 bytes in 18 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+[pid: 402481|app: 0|req: 114/450] 168.138.5.55 () {48 vars in 680 bytes} [Tue Nov 12 11:58:39 2024] GET /.git/HEAD => generated 2334 bytes in 13 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /secrets.json
+[pid: 402482|app: 0|req: 113/451] 168.138.5.55 () {48 vars in 688 bytes} [Tue Nov 12 11:58:39 2024] GET /secrets.json => generated 2343 bytes in 7 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /server.key
+Not Found: /phpinfo.php
+[pid: 402483|app: 0|req: 115/452] 168.138.5.55 () {48 vars in 682 bytes} [Tue Nov 12 11:58:39 2024] GET /server.key => generated 2337 bytes in 20 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /api/.env
+[pid: 402482|app: 0|req: 113/453] 168.138.5.55 () {48 vars in 674 bytes} [Tue Nov 12 11:58:39 2024] GET /api/.env => generated 2331 bytes in 25 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+[pid: 402483|app: 0|req: 115/454] 168.138.5.55 () {48 vars in 684 bytes} [Tue Nov 12 11:58:39 2024] GET /phpinfo.php => generated 2340 bytes in 19 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /.svn/wc.db
+[pid: 402481|app: 0|req: 115/455] 168.138.5.55 () {48 vars in 682 bytes} [Tue Nov 12 11:58:39 2024] GET /.svn/wc.db => generated 2337 bytes in 4 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /config/database.php
+[pid: 402480|app: 0|req: 113/456] 168.138.5.55 () {48 vars in 698 bytes} [Tue Nov 12 11:58:39 2024] GET /config/database.php => generated 2364 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /server-status
+[pid: 402480|app: 0|req: 114/457] 168.138.5.55 () {48 vars in 692 bytes} [Tue Nov 12 11:58:39 2024] GET /server-status => generated 2346 bytes in 6 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /wp-admin/setup-config.php
+[pid: 402481|app: 0|req: 116/458] 168.138.5.55 () {48 vars in 714 bytes} [Tue Nov 12 11:58:39 2024] GET /wp-admin/setup-config.php => generated 2382 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /config.php
+[pid: 402482|app: 0|req: 114/459] 168.138.5.55 () {48 vars in 682 bytes} [Tue Nov 12 11:58:39 2024] GET /config.php => generated 2337 bytes in 6 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /.ssh/id_rsa
+[pid: 402483|app: 0|req: 116/460] 168.138.5.55 () {48 vars in 683 bytes} [Tue Nov 12 11:58:39 2024] GET /.ssh/id_rsa => generated 2340 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /.ssh/id_ecdsa
+[pid: 402482|app: 0|req: 115/461] 168.138.5.55 () {48 vars in 689 bytes} [Tue Nov 12 11:58:39 2024] GET /.ssh/id_ecdsa => generated 2346 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /.kube/config
+[pid: 402483|app: 0|req: 117/462] 168.138.5.55 () {48 vars in 687 bytes} [Tue Nov 12 11:58:39 2024] GET /.kube/config => generated 2343 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /
+[pid: 402481|app: 0|req: 117/463] 168.138.5.55 () {50 vars in 774 bytes} [Tue Nov 12 12:05:39 2024] GET / => generated 2289 bytes in 25 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /example.com:443
+[pid: 402480|app: 0|req: 115/464] 154.213.184.18 () {26 vars in 316 bytes} [Tue Nov 12 12:48:47 2024] CONNECT example.com:443 => generated 1795 bytes in 51 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /
+[pid: 402480|app: 0|req: 116/465] 122.117.32.192 () {28 vars in 423 bytes} [Tue Nov 12 13:23:56 2024] GET / => generated 2277 bytes in 41 msecs (HTTP/1.0 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /
+[pid: 402481|app: 0|req: 118/466] 168.138.5.55 () {50 vars in 778 bytes} [Tue Nov 12 13:37:27 2024] GET / => generated 2289 bytes in 39 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /
+[pid: 402482|app: 0|req: 116/467] 168.138.5.55 () {50 vars in 774 bytes} [Tue Nov 12 13:45:58 2024] GET / => generated 2289 bytes in 37 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /tactics
+[pid: 402483|app: 0|req: 118/468] 168.138.5.55 () {44 vars in 820 bytes} [Tue Nov 12 14:09:17 2024] GET /tactics?page=10 => generated 2335 bytes in 36 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /
+[pid: 402482|app: 0|req: 117/469] 114.32.80.63 () {28 vars in 421 bytes} [Tue Nov 12 14:46:20 2024] GET / => generated 2277 bytes in 42 msecs (HTTP/1.0 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /
+[pid: 402483|app: 0|req: 119/470] 185.191.126.248 () {24 vars in 250 bytes} [Tue Nov 12 15:06:44 2024] GET / => generated 2285 bytes in 38 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /
+[pid: 402481|app: 0|req: 119/471] 168.138.5.55 () {50 vars in 774 bytes} [Tue Nov 12 15:07:08 2024] GET / => generated 2289 bytes in 7 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /
+[pid: 402480|app: 0|req: 117/472] 168.138.5.55 () {48 vars in 890 bytes} [Tue Nov 12 15:09:06 2024] GET / => generated 2287 bytes in 6 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /pro.ip-api.com:443
+[pid: 402480|app: 0|req: 118/473] 185.91.127.43 () {28 vars in 337 bytes} [Tue Nov 12 15:19:24 2024] CONNECT pro.ip-api.com:443 => generated 1803 bytes in 55 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /
+[pid: 402481|app: 0|req: 120/474] 168.138.5.55 () {48 vars in 907 bytes} [Tue Nov 12 15:56:30 2024] GET / => generated 2289 bytes in 42 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /
+[pid: 402482|app: 0|req: 118/475] 168.138.5.55 () {36 vars in 496 bytes} [Tue Nov 12 16:02:53 2024] GET / => generated 2288 bytes in 9 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /
+[pid: 402483|app: 0|req: 120/476] 1.34.164.40 () {28 vars in 420 bytes} [Tue Nov 12 16:16:15 2024] GET / => generated 2277 bytes in 23 msecs (HTTP/1.0 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /
+[pid: 402482|app: 0|req: 119/477] 198.235.24.227 () {26 vars in 540 bytes} [Tue Nov 12 16:24:49 2024] GET / => generated 2289 bytes in 23 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /.env
+[pid: 402483|app: 0|req: 121/478] 168.138.5.55 () {40 vars in 553 bytes} [Tue Nov 12 16:37:15 2024] GET /.env => generated 2318 bytes in 12 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /.env
+[pid: 402481|app: 0|req: 121/479] 168.138.5.55 () {50 vars in 760 bytes} [Tue Nov 12 16:39:34 2024] GET /.env => generated 2319 bytes in 7 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /tactics
+[pid: 402480|app: 0|req: 119/480] 168.138.5.55 () {44 vars in 818 bytes} [Tue Nov 12 16:42:14 2024] GET /tactics?page=17 => generated 2335 bytes in 8 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /
+[pid: 402480|app: 0|req: 120/481] 168.138.5.55 () {50 vars in 778 bytes} [Tue Nov 12 16:43:11 2024] GET / => generated 2289 bytes in 14 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /pro.ip-api.com:443
+[pid: 402481|app: 0|req: 122/482] 80.75.212.9 () {28 vars in 335 bytes} [Tue Nov 12 17:07:57 2024] CONNECT pro.ip-api.com:443 => generated 1803 bytes in 33 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /
+[pid: 402482|app: 0|req: 120/483] 45.84.89.2 () {28 vars in 419 bytes} [Tue Nov 12 17:27:14 2024] GET / => generated 2285 bytes in 39 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /example.com:443
+[pid: 402483|app: 0|req: 122/484] 154.213.184.18 () {26 vars in 315 bytes} [Tue Nov 12 17:40:41 2024] CONNECT example.com:443 => generated 1795 bytes in 12 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /api.ip.pn:443
+[pid: 402482|app: 0|req: 121/485] 80.75.212.9 () {28 vars in 320 bytes} [Tue Nov 12 18:59:24 2024] CONNECT api.ip.pn:443 => generated 1783 bytes in 51 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /
+[pid: 402483|app: 0|req: 123/486] 168.138.5.55 () {38 vars in 531 bytes} [Tue Nov 12 19:08:40 2024] GET / => generated 2287 bytes in 11 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /
+[pid: 402481|app: 0|req: 123/487] 123.241.17.235 () {28 vars in 423 bytes} [Tue Nov 12 19:12:43 2024] GET / => generated 2277 bytes in 9 msecs (HTTP/1.0 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /
+[pid: 402480|app: 0|req: 121/488] 205.210.31.69 () {26 vars in 542 bytes} [Tue Nov 12 19:12:51 2024] GET / => generated 2291 bytes in 6 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /
+[pid: 402480|app: 0|req: 122/489] 123.241.17.235 () {28 vars in 423 bytes} [Tue Nov 12 19:13:02 2024] GET / => generated 2277 bytes in 4 msecs (HTTP/1.0 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /wp-admin/setup-config.php
+[pid: 402481|app: 0|req: 124/490] 168.138.5.55 () {50 vars in 903 bytes} [Tue Nov 12 19:29:16 2024] GET /wp-admin/setup-config.php?step=1 => generated 2389 bytes in 37 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /wordpress/wp-admin/setup-config.php
+[pid: 402482|app: 0|req: 122/491] 168.138.5.55 () {50 vars in 933 bytes} [Tue Nov 12 19:29:17 2024] GET /wordpress/wp-admin/setup-config.php?step=1 => generated 2419 bytes in 6 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /robots.txt
+[pid: 402483|app: 0|req: 124/492] 168.138.5.55 () {40 vars in 594 bytes} [Tue Nov 12 19:56:21 2024] GET /robots.txt => generated 2335 bytes in 31 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /
+[pid: 402482|app: 0|req: 123/493] 168.138.5.55 () {44 vars in 856 bytes} [Tue Nov 12 19:56:22 2024] GET / => generated 2287 bytes in 6 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /robots.txt
+[pid: 402483|app: 0|req: 125/494] 168.138.5.55 () {40 vars in 598 bytes} [Tue Nov 12 19:56:51 2024] GET /robots.txt => generated 2336 bytes in 11 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /
+[pid: 402481|app: 0|req: 125/495] 168.138.5.55 () {44 vars in 860 bytes} [Tue Nov 12 19:56:52 2024] GET / => generated 2288 bytes in 6 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /
+[pid: 402480|app: 0|req: 123/496] 198.235.24.217 () {26 vars in 543 bytes} [Tue Nov 12 20:19:22 2024] GET / => generated 2291 bytes in 20 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /
+[pid: 402480|app: 0|req: 124/497] 184.105.139.113 () {30 vars in 440 bytes} [Tue Nov 12 20:30:22 2024] GET / => generated 2285 bytes in 29 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /favicon.ico
+[pid: 402481|app: 0|req: 126/498] 184.105.139.101 () {30 vars in 417 bytes} [Tue Nov 12 20:30:55 2024] GET /favicon.ico => generated 2336 bytes in 6 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /tactics
+[pid: 402482|app: 0|req: 124/499] 168.138.5.55 () {44 vars in 821 bytes} [Tue Nov 12 20:31:10 2024] GET /tactics?page=15 => generated 2335 bytes in 6 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /http:/api.ipify.org/
+[pid: 402483|app: 0|req: 126/500] 184.105.139.81 () {26 vars in 440 bytes} [Tue Nov 12 20:31:17 2024] GET http://api.ipify.org/?format=json => generated 1818 bytes in 6 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /www.shadowserver.org:443
+[pid: 402482|app: 0|req: 125/501] 184.105.139.113 () {32 vars in 522 bytes} [Tue Nov 12 20:31:40 2024] CONNECT www.shadowserver.org:443 => generated 1827 bytes in 6 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /
+[pid: 402483|app: 0|req: 127/502] 168.138.5.55 () {38 vars in 614 bytes} [Tue Nov 12 20:53:43 2024] GET / => generated 2287 bytes in 17 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /favicon.ico
+[pid: 402481|app: 0|req: 127/503] 168.138.5.55 () {36 vars in 608 bytes} [Tue Nov 12 20:53:44 2024] GET /favicon.ico => generated 2338 bytes in 6 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /robots.txt
+[pid: 402480|app: 0|req: 125/504] 168.138.5.55 () {42 vars in 668 bytes} [Tue Nov 12 21:04:57 2024] GET /robots.txt => generated 2336 bytes in 35 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /example.com:443
+[pid: 402480|app: 0|req: 126/505] 154.213.184.18 () {26 vars in 316 bytes} [Tue Nov 12 21:44:55 2024] CONNECT example.com:443 => generated 1795 bytes in 41 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /
+[pid: 402481|app: 0|req: 128/506] 198.235.24.195 () {28 vars in 297 bytes} [Tue Nov 12 21:54:49 2024] GET / => generated 2285 bytes in 18 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /
+[pid: 402482|app: 0|req: 126/507] 168.138.5.55 () {36 vars in 467 bytes} [Tue Nov 12 22:55:05 2024] GET / => generated 2288 bytes in 41 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /
+[pid: 402483|app: 0|req: 128/508] 168.138.5.55 () {46 vars in 915 bytes} [Tue Nov 12 23:00:22 2024] GET / => generated 2288 bytes in 16 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /
+[pid: 402482|app: 0|req: 127/509] 168.138.5.55 () {32 vars in 380 bytes} [Tue Nov 12 23:43:35 2024] GET / => generated 2288 bytes in 41 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /
+[pid: 402483|app: 0|req: 129/510] 168.138.5.55 () {32 vars in 380 bytes} [Tue Nov 12 23:43:37 2024] GET / => generated 2288 bytes in 6 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /
+[pid: 402481|app: 0|req: 129/511] 168.138.5.55 () {32 vars in 380 bytes} [Tue Nov 12 23:43:39 2024] GET / => generated 2288 bytes in 6 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /api.ip.pn:443
+[pid: 402480|app: 0|req: 127/512] 185.91.127.43 () {28 vars in 322 bytes} [Wed Nov 13 01:05:02 2024] CONNECT api.ip.pn:443 => generated 1783 bytes in 42 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /wp-admin/setup-config.php
+[pid: 402480|app: 0|req: 128/513] 168.138.5.55 () {50 vars in 845 bytes} [Wed Nov 13 01:10:28 2024] GET /wp-admin/setup-config.php?step=1 => generated 2389 bytes in 8 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /wordpress/wp-admin/setup-config.php
+[pid: 402481|app: 0|req: 130/514] 168.138.5.55 () {50 vars in 875 bytes} [Wed Nov 13 01:10:28 2024] GET /wordpress/wp-admin/setup-config.php?step=1 => generated 2419 bytes in 6 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /wp-admin/install.php
+[pid: 402482|app: 0|req: 128/515] 168.138.5.55 () {50 vars in 830 bytes} [Wed Nov 13 01:10:29 2024] GET /wp-admin/install.php?step=1 => generated 2374 bytes in 7 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /
+[pid: 402483|app: 0|req: 130/516] 152.32.180.138 () {28 vars in 470 bytes} [Wed Nov 13 01:17:34 2024] GET / => generated 2285 bytes in 10 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /favicon.ico
+[pid: 402482|app: 0|req: 129/517] 152.32.180.138 () {32 vars in 657 bytes} [Wed Nov 13 01:17:35 2024] GET /favicon.ico => generated 2336 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /robots.txt
+[pid: 402483|app: 0|req: 131/518] 152.32.180.138 () {32 vars in 655 bytes} [Wed Nov 13 01:17:36 2024] GET /robots.txt => generated 2333 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /sitemap.xml
+[pid: 402481|app: 0|req: 131/519] 152.32.180.138 () {32 vars in 657 bytes} [Wed Nov 13 01:17:36 2024] GET /sitemap.xml => generated 2336 bytes in 5 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /
+[pid: 402480|app: 0|req: 129/520] 59.126.72.200 () {28 vars in 422 bytes} [Wed Nov 13 01:24:11 2024] GET / => generated 2277 bytes in 27 msecs (HTTP/1.0 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /
+[pid: 402480|app: 0|req: 130/521] 168.138.5.55 () {50 vars in 787 bytes} [Wed Nov 13 01:26:28 2024] GET / => generated 2289 bytes in 9 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /
+[pid: 402481|app: 0|req: 132/522] 168.138.5.55 () {40 vars in 603 bytes} [Wed Nov 13 01:52:41 2024] GET / => generated 2287 bytes in 40 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /example.com:443
+[pid: 402482|app: 0|req: 130/523] 154.213.184.18 () {26 vars in 316 bytes} [Wed Nov 13 02:04:44 2024] CONNECT example.com:443 => generated 1795 bytes in 18 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /api.ip.pn:443
+[pid: 402483|app: 0|req: 132/524] 185.91.127.43 () {28 vars in 322 bytes} [Wed Nov 13 04:16:45 2024] CONNECT api.ip.pn:443 => generated 1783 bytes in 42 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /
+[pid: 402482|app: 0|req: 131/525] 168.138.5.55 () {36 vars in 428 bytes} [Wed Nov 13 04:51:35 2024] GET / => generated 2287 bytes in 48 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /
+[pid: 402483|app: 0|req: 133/526] 168.138.5.55 () {36 vars in 430 bytes} [Wed Nov 13 04:51:45 2024] GET / => generated 2288 bytes in 6 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /robots.txt
+[pid: 402481|app: 0|req: 133/527] 168.138.5.55 () {36 vars in 514 bytes} [Wed Nov 13 05:10:24 2024] GET /robots.txt => generated 2335 bytes in 31 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /
+[pid: 402480|app: 0|req: 131/528] 168.138.5.55 () {36 vars in 494 bytes} [Wed Nov 13 05:10:25 2024] GET / => generated 2287 bytes in 6 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /tactics
+[pid: 402480|app: 0|req: 132/529] 168.138.5.55 () {44 vars in 819 bytes} [Wed Nov 13 05:36:58 2024] GET /tactics?page=22 => generated 2335 bytes in 34 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /example.com:443
+[pid: 402481|app: 0|req: 134/530] 154.213.184.18 () {26 vars in 316 bytes} [Wed Nov 13 06:04:40 2024] CONNECT example.com:443 => generated 1795 bytes in 39 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /
+[pid: 402482|app: 0|req: 132/531] 205.210.31.26 () {28 vars in 564 bytes} [Wed Nov 13 06:48:24 2024] GET / => generated 2285 bytes in 45 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /api.ip.pn:443
+[pid: 402483|app: 0|req: 134/532] 80.75.212.9 () {28 vars in 320 bytes} [Wed Nov 13 07:38:04 2024] CONNECT api.ip.pn:443 => generated 1783 bytes in 41 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /
+[pid: 402482|app: 0|req: 133/533] 185.191.126.248 () {24 vars in 250 bytes} [Wed Nov 13 08:14:35 2024] GET / => generated 2285 bytes in 40 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /
+[pid: 402483|app: 0|req: 135/534] 1.34.212.100 () {28 vars in 421 bytes} [Wed Nov 13 08:41:38 2024] GET / => generated 2277 bytes in 40 msecs (HTTP/1.0 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /example.com:443
+[pid: 402481|app: 0|req: 135/535] 154.213.184.18 () {26 vars in 316 bytes} [Wed Nov 13 08:42:13 2024] CONNECT example.com:443 => generated 1795 bytes in 6 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /
+[pid: 402480|app: 0|req: 133/536] 168.138.5.55 () {38 vars in 548 bytes} [Wed Nov 13 09:28:42 2024] GET / => generated 2287 bytes in 41 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /favicon.ico
+[pid: 402480|app: 0|req: 134/537] 168.138.5.55 () {38 vars in 486 bytes} [Wed Nov 13 09:28:48 2024] GET /favicon.ico => generated 2338 bytes in 6 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /sitemap.xml
+[pid: 402481|app: 0|req: 136/538] 168.138.5.55 () {38 vars in 487 bytes} [Wed Nov 13 09:28:49 2024] GET /sitemap.xml => generated 2338 bytes in 6 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /robots.txt
+[pid: 402482|app: 0|req: 134/539] 168.138.5.55 () {38 vars in 485 bytes} [Wed Nov 13 09:28:51 2024] GET /robots.txt => generated 2335 bytes in 6 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /api.ip.pn:443
+[pid: 402483|app: 0|req: 136/540] 185.91.127.43 () {28 vars in 322 bytes} [Wed Nov 13 09:50:08 2024] CONNECT api.ip.pn:443 => generated 1783 bytes in 56 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /
+[pid: 402482|app: 0|req: 135/541] 65.49.20.126 () {30 vars in 418 bytes} [Wed Nov 13 10:24:09 2024] GET / => generated 2285 bytes in 40 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+Not Found: /favicon.ico
+[pid: 402483|app: 0|req: 137/542] 65.49.20.94 () {30 vars in 433 bytes} [Wed Nov 13 10:24:37 2024] GET /favicon.ico => generated 2336 bytes in 6 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /http:/api.ipify.org/
+[pid: 402481|app: 0|req: 137/543] 65.49.20.90 () {26 vars in 425 bytes} [Wed Nov 13 10:24:59 2024] GET http://api.ipify.org/?format=json => generated 1818 bytes in 6 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 1)
+Not Found: /www.shadowserver.org:443
+[pid: 402480|app: 0|req: 135/544] 65.49.20.82 () {32 vars in 506 bytes} [Wed Nov 13 10:25:21 2024] CONNECT www.shadowserver.org:443 => generated 1827 bytes in 7 msecs (HTTP/1.1 404) 7 headers in 229 bytes (1 switches on core 0)
+[uwsgi-python-reloader] module/file /home/ubuntu/stockApi/./basic/models.py has been modified
+gateway "uWSGI http 1" has been buried (pid: 402484)
+...gracefully killing workers...
+Gracefully killing worker 1 (pid: 402480)...
+Gracefully killing worker 2 (pid: 402481)...
+Gracefully killing worker 4 (pid: 402483)...
+Gracefully killing worker 3 (pid: 402482)...
+[uwsgi-python-reloader] module/file /home/ubuntu/stockApi/./basic/models.py has been modified
+[uwsgi-python-reloader] module/file /home/ubuntu/stockApi/./basic/models.py has been modified
+worker 1 buried after 1 seconds
+worker 2 buried after 1 seconds
+worker 3 buried after 1 seconds
+worker 4 buried after 1 seconds
+binary reloading uWSGI...
+chdir() to /home/ubuntu/stockApi
+closing all non-uwsgi socket fds > 2 (max_fd = 1024)...
+found fd 6 mapped to socket 0 (127.0.0.1:36445)
+running /home/ubuntu/miniconda3/envs/django/bin/uwsgi
+[uWSGI] getting INI configuration from stockApiUwsgi.ini
+[uwsgi-static] added mapping for /static => /home/ubuntu/stockApi/static
+*** Starting uWSGI 2.0.21 (64bit) on [Wed Nov 13 02:36:53 2024] ***
+compiled with version: 11.2.0 on 05 August 2024 19:33:33
+os: Linux-5.15.0-1063-oracle #69~20.04.1-Ubuntu SMP Sat Jun 29 02:22:36 UTC 2024
+nodename: mlb-vps
+machine: aarch64
+clock source: unix
+pcre jit disabled
+detected number of CPU cores: 2
+current working directory: /home/ubuntu/stockApi
+detected binary path: /home/ubuntu/miniconda3/envs/django/bin/uwsgi
+chdir() to /home/ubuntu/stockApi
+your processes number limit is 47244
+your memory page size is 4096 bytes
+ *** WARNING: you have enabled harakiri without post buffering. Slow upload could be rejected on post-unbuffered webservers *** 
+detected max file descriptor number: 1024
+building mime-types dictionary from file /etc/mime.types...567 entry found
+lock engine: pthread robust mutexes
+thunder lock: enabled
+uWSGI http bound on 0.0.0.0:8000 fd 9
+uwsgi socket 0 bound to TCP address 127.0.0.1:41425 (port auto-assigned) fd 8
+Python version: 3.9.19 (main, May  6 2024, 19:46:57)  [GCC 11.2.0]
+Python main interpreter initialized at 0x8f7b830
+python threads support enabled
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 703600 bytes (687 KB) for 8 cores
+*** Operational MODE: preforking+threaded ***
+*** uWSGI is running in multiple interpreter mode ***
+gracefully (RE)spawned uWSGI master process (pid: 402479)
+spawned uWSGI worker 1 (pid: 1684128, cores: 2)
+spawned uWSGI worker 2 (pid: 1684129, cores: 2)
+spawned uWSGI worker 3 (pid: 1684130, cores: 2)
+spawned uWSGI worker 4 (pid: 1684131, cores: 2)
+spawned uWSGI http 1 (pid: 1684132)
+Python auto-reloader enabled
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x8f7b830 pid: 1684130 (default app)
+mountpoint  already configured. skip.
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x8f7b830 pid: 1684129 (default app)
+mountpoint  already configured. skip.
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x8f7b830 pid: 1684131 (default app)
+mountpoint  already configured. skip.
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x8f7b830 pid: 1684128 (default app)
+mountpoint  already configured. skip.
