@@ -47,6 +47,8 @@ INSTALLED_APPS = [
     "basic",
     "tactics",
     "users",
+    # 自动生成接口文档
+    'coreapi',
 ]
 
 MIDDLEWARE = [
@@ -163,6 +165,8 @@ REST_FRAMEWORK = {
     ),
     # 配置过滤器
     'DEFAULT_FILTER_BACKENDS': ('django_filters.rest_framework.DjangoFilterBackend',),
+    # 接口文档的配置
+    'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema',
 }
 
 SIMPLE_JWT = {

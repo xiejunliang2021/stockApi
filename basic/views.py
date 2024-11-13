@@ -149,14 +149,15 @@ def analyze_data(request):
         start_date = data.get('start_date')
         end_date = data.get('end_date')
         # 获取股票的交易日历
-        stock_date = TradeCal.objects.all()
-        print("------------------------stock_date---------------------------------")
+        stock_date = get_previous_trade_days(trade_date=start_date)
+        print("--------------------------------------------------------")
         print(stock_date)
+
 
         # 使用 Tushare 获取数据
         tushare_data = pro.daily(ts_code=ts_code, start_date=start_date, end_date=end_date)
         df_code = get_non_st_stocks()
-        print(df_code)
+
         # 执行数据分析
         analysis_result = {
             "code": tushare_data['ts_code'],

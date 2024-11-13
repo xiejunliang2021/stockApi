@@ -11,7 +11,6 @@ from datetime import datetime, timedelta
 from .config import ts_token
 from .models import StockBasic, TradeCal
 
-
 # 初始化 Tushare API
 ts.set_token(ts_token)
 pro = ts.pro_api()
@@ -65,16 +64,22 @@ def fetch_and_store_trade_data(start_date, end_date):
         return f"Failed to fetch data from Tushare: {str(e)}"
 
 
-def fetch_data_for_stocks(trade_days, ts_codes):
-    """根据给定的交易日期和非 ST 股票代码获取日线数据"""
-    all_data = []
-    for ts_code in ts_codes:
-        # 获取指定日期范围内的日线数据
-        daily_data = pro.daily(ts_code=ts_code, start_date=trade_days[-1], end_date=trade_days[0])
-        # 确保数据包含所有四个交易日
-        if len(daily_data) == 4:
-            all_data.append(daily_data)
-    return all_data
+def get_previous_trade_days(trade_date):
+    """
 
+    :param trade_date: 需要查询的日期
+    :return: 返回所需要的日期数据（当前日期往前的四个交易日的日期）
+    """
 
+    # 将 trade_date 转换为日期格式
+    trade_date = datetime.strptime(trade_date, "%Y%m%d").date()
 
+    # 获取 trade_date 之前的所有交易日（即 is_open=1 的日期），按日期降序排列
+    previous_trade_days = (
+        TradeCal.objects
+            .filter(cal_date__lte=trade_date, is_open='1')
+            .order_by('-cal_date')[:3]
+    )
+    print(previous_trade_days.query)
+
+    return previous_trade_days
