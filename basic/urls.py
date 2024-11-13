@@ -6,17 +6,19 @@
 @Date ：2024/11/3 19:47 
 @JianShu : 
 '''
-from django.urls import path
-from .views import basic_list, BasicView
 
-from .views import basic_list
+from django.urls import path
+from .views import basic_list, BasicView, analyze_data, get_trade_status
 
 urlpatterns = [
     # 登录
     path('tushare/basic/', basic_list),
-    path('basic/', BasicView.as_view({'get': 'list'}))
-
+    path('basic/', BasicView.as_view({'get': 'list'})),
+    # 测试，从前端获取数据，进行分析后返回给前端
+    path('analyze/', analyze_data),
+    path('date_is_open/', get_trade_status)
 ]
+
 
 
 
