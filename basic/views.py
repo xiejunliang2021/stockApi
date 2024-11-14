@@ -3,7 +3,7 @@ from rest_framework.response import Response
 from rest_framework.viewsets import GenericViewSet
 from rest_framework import status, mixins
 from django_filters.rest_framework import DjangoFilterBackend
-from .serializers import BasicSerializer
+from .serializers import BasicSerializer, TradeCalSerializer
 from .filters import StockBasicFilter
 from .stock_tushare import *
 
@@ -75,61 +75,7 @@ def basic_list(request):
             return Response({"code": 400, "message": "数据没有创建成功", "data": str(e)}, status=status.HTTP_400_BAD_REQUEST)
 
 
-@api_view(['GET'])
-def get_trade_status(request):
-    start_date = request.query_params.get('start_date')
-    end_date = request.query_params.get('end_date')
 
-    if not start_date:
-        return Response({'error': 'Start_date不能为空'}, status=400)
-    if not end_date:
-        end_date = start_date
-
-    # 格式化日期
-    start_date = datetime.strptime(start_date, '%Y%m%d').strftime('%Y%m%d')
-    end_date = datetime.strptime(end_date, '%Y%m%d').strftime('%Y%m%d')
-
-    # 获取当前年份
-    current_year = datetime.now().year
-
-    # 判断前端传递的日期是否是12月20日以后
-    if int(start_date[:4]) == current_year and int(start_date[4:6]) >= 12 and int(start_date[6:8]) >= 20:
-        # 查询下一年的数据（如果需要）
-        next_year = current_year + 1
-        next_year_start_date = f'{next_year}0101'
-        next_year_end_date = f'{next_year}1231'
-
-        # 检查下一年是否已有数据
-        if not TradeCal.objects.filter(cal_date__gte=next_year_start_date, cal_date__lte=next_year_end_date).exists():
-            # 插入下一年数据
-            result = fetch_and_store_trade_data(next_year_start_date, next_year_end_date)
-            if result is not True:
-                return Response({'error': result}, status=500)
-
-    # 检查当前年份是否已有数据
-    current_year_start_date = f'{current_year}0101'
-    current_year_end_date = f'{current_year}1231'
-    if not TradeCal.objects.filter(cal_date__gte=current_year_start_date, cal_date__lte=current_year_end_date).exists():
-        # 插入当前年份的数据
-        result = fetch_and_store_trade_data(current_year_start_date, current_year_end_date)
-        if result is not True:
-            return Response({'error': result}, status=500)
-
-    # 查询指定日期范围的交易日历数据
-    trade_data = TradeCal.objects.filter(cal_date__gte=start_date, cal_date__lte=end_date)
-
-    if not trade_data:
-        return Response({'error': '找不到指定范围内的数据'}, status=404)
-
-    # 返回查询到的数据
-    trade_data_list = [{
-        'exchange': trade.exchange,
-        'cal_date': trade.cal_date,
-        'is_open': trade.is_open,
-        'pretrade_date': trade.pretrade_date
-    } for trade in trade_data]
-
-    return Response(trade_data_list)
 
 
 class BasicView(GenericViewSet,
@@ -140,39 +86,67 @@ class BasicView(GenericViewSet,
     filterset_class = StockBasicFilter
 
 
+class TradeCalView(GenericViewSet,
+                   mixins.ListModelMixin,
+                   ):
+    queryset = TradeCal.objects.all()
+    serializer_class = TradeCalSerializer
+
+    def list(self, request, *args, **kwargs):
+        # 获取查询参数中的日期
+        date_str = request.query_params.get('date')
+        if not date_str:
+            return Response({'error': '日期参数缺失'}, status=status.HTTP_400_BAD_REQUEST)
+
+        # 将字符串日期转换为日期对象
+        try:
+            date_obj = datetime.strptime(date_str, '%Y-%m-%d').date()
+        except ValueError:
+            return Response({'error': '日期格式错误，应为 YYYY-MM-DD'}, status=status.HTTP_400_BAD_REQUEST)
+
+        # 查询指定日期的数据
+        queryset = TradeCal.objects.filter(cal_date=date_obj)
+
+        # 如果数据库中没有数据，则调用 fetch_and_store_trade_data 函数插入数据
+        if not queryset.exists():
+            # 获取当前年份的开始和结束日期
+            start_date = f"{date_obj.year}-01-01"
+            end_date = f"{date_obj.year}-12-31"
+
+            # 调用 fetch_and_store_trade_data 函数
+            fetch_result = fetch_and_store_trade_data(start_date, end_date)
+            if fetch_result is not True:
+                return Response({'error': fetch_result}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+            # 重新查询指定日期的数据
+            queryset = TradeCal.objects.filter(cal_date=date_obj)
+
+        # 序列化查询结果并返回
+        serializer = self.get_serializer(queryset, many=True)
+        return Response(serializer.data)
+
+
 @api_view(['POST'])
 def analyze_data(request):
     try:
         # 获取请求中的数据
         data = request.data
-        ts_code = data.get('ts_code')
         start_date = data.get('start_date')
-        end_date = data.get('end_date')
-        # 获取股票的交易日历
-        stock_date = get_previous_trade_days(trade_date=start_date)
-        print("--------------------------------------------------------")
-        print(stock_date)
-
-
-        # 使用 Tushare 获取数据
-        tushare_data = pro.daily(ts_code=ts_code, start_date=start_date, end_date=end_date)
-        df_code = get_non_st_stocks()
-
-        # 执行数据分析
-        analysis_result = {
-            "code": tushare_data['ts_code'],
-            "open": tushare_data['open'],
-            "close": tushare_data['close']
-        }
-
-        # 返回分析结果
-        return Response(analysis_result, status=status.HTTP_200_OK)
+        # 获取股票交易日历
+        trade_dates = get_previous_trade_days(trade_date=start_date)
+        df = get_stock_data(trade_dates=trade_dates)
+        # selected_result = filter_stocks_by_conditions(df)
+        selected_df = filter_stocks_by_conditions(df)  # 筛选股票
+        # last_trade_dates_df = get_last_trade_dates(selected_df)  # 获取股票代码和最后一个交易日
+        # print(last_trade_dates_df.ts_code)
+        print(selected_df)
+        analyzed_results = analyze_selected_stocks(selected_df)
+        print(analyzed_results)
 
     except Exception as e:
-        return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
-
-
+    return Response()
 
 
 
