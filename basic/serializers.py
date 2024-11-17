@@ -8,7 +8,7 @@
 '''
 
 from rest_framework import serializers
-from .models import StockBasic
+from .models import StockBasic, TradeCal
 
 
 class BasicSerializer(serializers.ModelSerializer):
@@ -17,7 +17,10 @@ class BasicSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-
+class TradeCalSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = TradeCal
+        fields = '__all__'
 
 
 
