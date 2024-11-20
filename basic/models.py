@@ -5,7 +5,7 @@ from django.db import models
 
 class StockBasic(models.Model):
     """ 股票代码 """
-    ts_code = models.CharField(max_length=10, primary_key=True, verbose_name='ts代码')  # 设置主键
+    ts_code = models.CharField(max_length=10, primary_key=True, verbose_name='ts代码')
     symbol = models.CharField(max_length=10, verbose_name='股票代码')
     name = models.CharField(max_length=20, verbose_name='股票名称')
     area = models.CharField(max_length=20, verbose_name='地区', null=True, blank=True)
@@ -36,7 +36,13 @@ class TradeCal(models.Model):
 
 
 class Daily(models.Model):
-    ts_code = models.ForeignKey(to=StockBasic, verbose_name='股票代码', on_delete=models.CASCADE)
+    ts_code = models.ForeignKey(
+        StockBasic,
+        to_field='ts_code',  # 指定外键字段为 ts_code
+        on_delete=models.CASCADE,
+        db_column='ts_code_id',  # 数据库中列名保持一致
+        verbose_name='股票代码'
+    )
     trade_date = models.CharField(max_length=10, verbose_name='交易日期')
     open = models.DecimalField(verbose_name='开盘价', decimal_places=2, max_digits=7, default=0)
     close = models.DecimalField(verbose_name='收盘价', decimal_places=2, max_digits=7, default=0)
