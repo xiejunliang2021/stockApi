@@ -1,5 +1,6 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from rest_framework.views import APIView
 from rest_framework.viewsets import GenericViewSet
 from rest_framework import status, mixins
 from django_filters.rest_framework import DjangoFilterBackend
@@ -75,9 +76,6 @@ def basic_list(request):
             return Response({"code": 400, "message": "数据没有创建成功", "data": str(e)}, status=status.HTTP_400_BAD_REQUEST)
 
 
-
-
-
 class BasicView(GenericViewSet,
                 mixins.ListModelMixin):
     queryset = StockBasic.objects.all()
@@ -128,43 +126,42 @@ class TradeCalView(GenericViewSet,
 
 @api_view(['POST'])
 def analyze_data(request):
+    """
+    :param request: 前端穿过来的数据，包括start_date
+    :return: 通过计算获得需要的符合策略的代码和日期
+    """
     try:
         # 获取请求中的数据
         data = request.data
+        # 获取开始计算日期
         start_date = data.get('start_date')
-        # 获取股票交易日历
+        # 获取股票交易日历的四天的数据
         trade_dates = get_previous_trade_days(trade_date=start_date)
+        # 获取四天的数据并进行合并
         df = get_stock_data(trade_dates=trade_dates)
-        # selected_result = filter_stocks_by_conditions(df)
-        selected_df = filter_stocks_by_conditions(df)  # 筛选股票
-        # last_trade_dates_df = get_last_trade_dates(selected_df)  # 获取股票代码和最后一个交易日
-        # print(last_trade_dates_df.ts_code)
+        # 筛选股票
+        selected_df = filter_stocks_by_conditions(df)
+        # 获取股票代码和最后一个交易日
+        last_trade_dates_df = get_last_trade_dates(selected_df)
+        print("最后一个交易日和股票代码")
+        print(last_trade_dates_df)
+        print(last_trade_dates_df.ts_code)
         print(selected_df)
-        analyzed_results = analyze_selected_stocks(selected_df)
-        print(analyzed_results)
+        # print("================================================================")
+        # analyzed_results = analyze_selected_stocks(selected_df)
+        # print(analyzed_results)
 
     except Exception as e:
         return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
-    return Response()
+    return Response({"message": last_trade_dates_df}, status=status.HTTP_200_OK)
 
 
+class StockListView(APIView):
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    def post(self, request):
+        data = request.data
+        trade_date = data.get("trade_date")
+        ts_code = data.get("ts_code")
+        df = analyze_stock(ts_code, trade_date)
+        return Response({"trade_date": trade_date, "ts_code": ts_code, "message": df}, status=status.HTTP_200_OK)

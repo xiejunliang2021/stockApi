@@ -56,6 +56,34 @@ class Daily(models.Model):
         return self.ts_code
 
 
+class StockStrategyCode(models.Model):
+    """
+    如果你希望同一支股票在某个交易日只有一条记录，可以在模型中添加联合唯一约束，确保 ts_code 和 trade_date 的组合唯一
+    """
+    ts_code = models.ForeignKey(
+        to=StockBasic,
+        verbose_name='股票代码',
+        on_delete=models.CASCADE
+    )
+    trade_date = models.CharField(max_length=10, verbose_name='交易日期')
+    is_success = models.BooleanField(verbose_name="是否成功", default=False)
+    highest_price = models.DecimalField(max_digits=7, decimal_places=2, verbose_name="最高买点")
+    lowest_price = models.DecimalField(max_digits=7, decimal_places=2, verbose_name="最低买点")
+    average_price = models.DecimalField(max_digits=7, decimal_places=2, verbose_name="平均买点")
+
+    class Meta:
+        # 这种方式能避免重复插入数据，同时可以根据需要更新现有数据
+        constraints = [
+            models.UniqueConstraint(fields=['ts_code', 'trade_date'], name='unique_ts_code_trade_date')
+        ]
+        # 如果你的表中数据量较大，建议对 ts_code 和 trade_date 添加索引以提高查询效率
+        indexes = [
+            models.Index(fields=['ts_code'], name='idx_ts_code'),
+            models.Index(fields=['trade_date'], name='idx_trade_date'),
+        ]
+
+
+
 
 
 

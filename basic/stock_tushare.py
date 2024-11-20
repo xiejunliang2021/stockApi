@@ -9,7 +9,7 @@
 import tushare as ts
 from datetime import datetime, timedelta
 from .config import ts_token
-from .models import StockBasic, TradeCal
+from .models import StockBasic, TradeCal, StockStrategyCode
 from .serializers import TradeCalSerializer
 import pandas as pd
 from concurrent.futures import ThreadPoolExecutor, as_completed
@@ -17,7 +17,7 @@ from functools import lru_cache
 import logging
 import numpy as np
 from typing import List, Tuple, Dict
-
+from decimal import Decimal
 
 # 设置日志
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -116,9 +116,9 @@ def get_previous_trade_days(trade_date, days=4):
     # 只获取日期字段，并转换为字符串格式
     trade_dates = (
         TradeCal.objects
-        .filter(cal_date__lte=trade_date, is_open='1')
-        .order_by('-cal_date')
-        .values_list('cal_date', flat=True)[:days]
+            .filter(cal_date__lte=trade_date, is_open='1')
+            .order_by('-cal_date')
+            .values_list('cal_date', flat=True)[:days]
     )
 
     # 将日期转换为字符串格式
@@ -181,33 +181,59 @@ class DataValidator:
 
 
 @lru_cache(maxsize=128)
-def fetch_daily_data(date_str: str, pro) -> pd.DataFrame:
-    """获取单日数据的缓存装饰器函数"""
+def fetch_daily_data(date_str: str, ts_code: str = None) -> pd.DataFrame:
+    """
+    获取日线数据，支持全部股票或单个股票
+
+    参数:
+    - date_str: 日期字符串
+    - pro: tushare pro 实例
+    - ts_code: 可选，股票代码
+
+    返回:
+    DataFrame: 股票日线数据
+    """
     try:
-        return pro.daily(trade_date=date_str)
+        if ts_code:
+            return pro.daily(trade_date=date_str, ts_code=ts_code)
+        else:
+            return pro.daily(trade_date=date_str)
     except Exception as e:
-        logger.error(f"获取日线数据错误 {date_str}: {str(e)}")
+        logger.error(f"获取日线数据错误 {date_str}, {ts_code}: {str(e)}")
         return pd.DataFrame()
 
 
 @lru_cache(maxsize=128)
-def fetch_limit_data(date_str: str, pro) -> pd.DataFrame:
-    """获取单日涨跌停数据的缓存装饰器函数"""
+def fetch_limit_data(date_str: str, ts_code: str = None) -> pd.DataFrame:
+    """
+    获取涨跌停数据，支持全部股票或单个股票
+
+    参数:
+    - date_str: 日期字符串
+    - pro: tushare pro 实例
+    - ts_code: 可选，股票代码
+
+    返回:
+    DataFrame: 股票涨跌停数据
+    """
     try:
-        return pro.stk_limit(trade_date=date_str)
+        if ts_code:
+            return pro.stk_limit(trade_date=date_str, ts_code=ts_code)
+        else:
+            return pro.stk_limit(trade_date=date_str)
     except Exception as e:
-        logger.error(f"获取涨跌停数据错误 {date_str}: {str(e)}")
+        logger.error(f"获取涨跌停数据错误 {date_str}, {ts_code}: {str(e)}")
         return pd.DataFrame()
 
 
-def process_single_date(date: str, pro, valid_ts_codes: List[str]) -> Tuple[str, pd.DataFrame]:
+def process_single_date(date: str, valid_ts_codes: List[str]) -> Tuple[str, pd.DataFrame]:
     """处理单个日期的数据"""
     try:
         date_str = date.replace('-', '')
 
         # 获取数据
-        daily_df = fetch_daily_data(date_str, pro)
-        limit_df = fetch_limit_data(date_str, pro)
+        daily_df = fetch_daily_data(date_str)
+        limit_df = fetch_limit_data(date_str)
 
         # 验证数据
         if not DataValidator.validate_date_data(daily_df, date):
@@ -255,7 +281,7 @@ def get_stock_data(trade_dates: List[str]) -> pd.DataFrame:
     with ThreadPoolExecutor(max_workers=min(len(trade_dates), 5)) as executor:
         # 提交所有任务
         future_to_date = {
-            executor.submit(process_single_date, date, pro, valid_ts_codes): date
+            executor.submit(process_single_date, date, valid_ts_codes): date
             for date in trade_dates
         }
 
@@ -299,7 +325,7 @@ def get_stock_data(trade_dates: List[str]) -> pd.DataFrame:
         logger.info(f"成功处理 {len(trade_dates)} 个交易日的数据")
         return result
     else:
-        logger.error("未能获取任何有效数据")
+        logger.error("====未能获取任何有效数据====")
         return pd.DataFrame()
 
 
@@ -384,9 +410,32 @@ def get_stock_data_30_days(ts_code: str, end_date: str) -> pd.DataFrame:
     """
     通过Tushare获取指定股票代码在end_date往前30天的交易数据。
     """
-    df = pro.daily(ts_code=ts_code, end_date=end_date, limit=30)
-    df = df.sort_values('trade_date', ascending=True)  # 按日期升序排列
-    return df
+    try:
+        # 获取最近 30 天的交易数据
+        trade_data = pro.daily(ts_code=ts_code, end_date=end_date, limit=30)
+        if trade_data is None or trade_data.empty:
+            print(f"未能获取到 {ts_code} 在 {end_date} 前 30 天的交易数据")
+            return pd.DataFrame()
+
+        # 获取涨跌停价格
+        limit_data = pro.stk_limit(ts_code=ts_code, end_date=end_date, limit=30)
+        if limit_data is None or limit_data.empty:
+            print(f"未能获取到 {ts_code} 的涨跌停价格数据")
+            return pd.DataFrame()
+
+        # 按日期升序排列
+        trade_data = trade_data.sort_values('trade_date', ascending=True)
+        limit_data = limit_data.sort_values('trade_date', ascending=True)
+
+        # 合并交易数据与涨跌停价格
+        merged_data = pd.merge(trade_data, limit_data, on=['ts_code', 'trade_date'], how='inner')
+
+        # 返回合并后的数据
+        return merged_data
+
+    except Exception as e:
+        print(f"获取数据时发生错误: {e}")
+        return pd.DataFrame()
 
 
 def analyze_selected_stocks(selected_df: pd.DataFrame) -> pd.DataFrame:
@@ -404,6 +453,8 @@ def analyze_selected_stocks(selected_df: pd.DataFrame) -> pd.DataFrame:
     for _, row in selected_df.iterrows():
         ts_code = row['ts_code']
         end_date = row['trade_date']
+        print("ts_code: " + ts_code)
+        print("end_date: " + end_date)
 
         # 获取该股票往前30天的数据
         stock_data_30_days = get_stock_data_30_days(ts_code, end_date)
@@ -446,6 +497,170 @@ def analyze_selected_stocks(selected_df: pd.DataFrame) -> pd.DataFrame:
         })
 
     return pd.DataFrame(results)
+
+
+def insert_or_update_stock_strategy(ts_code, trade_date, highest_price, lowest_price, average_price, is_success):
+    try:
+        # 查找现有记录
+        obj = StockStrategyCode.objects.filter(ts_code=ts_code, trade_date=trade_date).first()
+
+        if obj:
+            # 数据存在，检查是否完全一致
+            if (
+                    Decimal(obj.highest_price) == Decimal(highest_price) and
+                    Decimal(obj.lowest_price) == Decimal(lowest_price) and
+                    Decimal(obj.average_price) == Decimal(average_price) and
+                    obj.is_success == is_success
+            ):
+                # 数据完全一致，不执行更新
+                print("数据完全一致，跳过更新")
+                return obj, False
+            else:
+                # 数据不一致，更新记录
+                obj.highest_price = highest_price
+                obj.lowest_price = lowest_price
+                obj.average_price = average_price
+                obj.is_success = is_success
+                obj.save()
+                print("数据已更新")
+                return obj, True
+        else:
+            # 数据不存在，插入新记录
+            obj = StockStrategyCode.objects.create(
+                ts_code=ts_code,
+                trade_date=trade_date,
+                highest_price=highest_price,
+                lowest_price=lowest_price,
+                average_price=average_price,
+                is_success=is_success
+            )
+            print("新记录已插入")
+            return obj, True
+    except Exception as e:
+        print(f"错误发生：{e}")
+        return None, False
+
+
+def analyze_stock(ts_code, strategy_date):
+    """
+    分析给定股票代码在策略日期之前的特定价格区间
+    :param ts_code: 股票代码
+    :param strategy_date: 策略日期（YYYYMMDD）
+    :return: dict 包括最高价、最低价和平均价
+    """
+    # 确定日期范围：从策略日期往前一年
+    strategy_date_obj = datetime.strptime(strategy_date, "%Y%m%d")
+    start_date = (strategy_date_obj - timedelta(days=365)).strftime("%Y%m%d")
+
+    # 获取股票的日线数据
+    daily_df = pro.daily(ts_code=ts_code, start_date=start_date, end_date=strategy_date)
+    if daily_df.empty:
+        raise ValueError(f"No daily data found for {ts_code} between {start_date} and {strategy_date}")
+
+    # 获取股票的涨跌停数据
+    limit_df = pro.stk_limit(ts_code=ts_code, start_date=start_date, end_date=strategy_date)
+    if limit_df.empty:
+        raise ValueError(f"No limit data found for {ts_code} between {start_date} and {strategy_date}")
+
+    # 合并日线数据和涨跌停数据
+    merged_df = pd.merge(daily_df, limit_df, on=["ts_code", "trade_date"], how="inner")
+
+    # 标记涨停和跌停
+    merged_df['is_limit_up'] = (merged_df['close'] >= merged_df['up_limit']).astype(int)
+    merged_df['is_limit_down'] = (merged_df['close'] <= merged_df['down_limit']).astype(int)
+
+    # 按日期降序排序
+    merged_df = merged_df.sort_values(by="trade_date", ascending=False)
+
+    # 筛选策略日期之前的连续两个涨停日期
+    limit_up_days = merged_df[merged_df['is_limit_up'] == 1].head(2)
+    if len(limit_up_days) < 2:
+        raise ValueError("Less than 2 consecutive limit-up days found.")
+
+    # 获取第一个涨停日期之前的非涨停数据
+    first_limit_date = limit_up_days.iloc[0]['trade_date']
+    non_limit_data = merged_df[(merged_df['trade_date'] < first_limit_date) & (merged_df['is_limit_up'] == 0)]
+
+    # 获取前三个连续非涨停的交易日
+    non_limit_days = non_limit_data.head(3)
+    if len(non_limit_days) < 3:
+        raise ValueError("Less than 3 non-limit days before the first limit-up day.")
+
+    # 计算最高价、最低价和平均价
+    highest_price = non_limit_days['high'].max()
+    lowest_price = non_limit_days['low'].min()
+    average_price = non_limit_days['close'].mean()
+
+    return {
+        "highest_price": highest_price,
+        "lowest_price": lowest_price,
+        "average_price": average_price
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
