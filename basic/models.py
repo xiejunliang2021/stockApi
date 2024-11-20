@@ -5,7 +5,7 @@ from django.db import models
 
 class StockBasic(models.Model):
     """ 股票代码 """
-    ts_code = models.CharField(max_length=10, verbose_name='ts代码')
+    ts_code = models.CharField(max_length=10, primary_key=True, verbose_name='ts代码')  # 设置主键
     symbol = models.CharField(max_length=10, verbose_name='股票代码')
     name = models.CharField(max_length=20, verbose_name='股票名称')
     area = models.CharField(max_length=20, verbose_name='地区', null=True, blank=True)
@@ -19,9 +19,9 @@ class StockBasic(models.Model):
         db_table = 'code'
         verbose_name = '股票基础信息表'
 
-    # 在数据返回的时候返回股票名称
     def __str__(self):
         return self.name
+
 
 
 class TradeCal(models.Model):

@@ -590,6 +590,8 @@ def analyze_stock(ts_code, strategy_date):
     highest_price = non_limit_days['high'].max()
     lowest_price = non_limit_days['low'].min()
     average_price = non_limit_days['close'].mean()
+    trade_date = strategy_date
+    insert_or_update_stock_strategy(ts_code, trade_date, highest_price, lowest_price, average_price, is_success=False)
 
     return {
         "highest_price": highest_price,
