@@ -78,6 +78,9 @@ def basic_list(request):
 
 class BasicView(GenericViewSet,
                 mixins.ListModelMixin):
+    """
+    获取股票全部基础数据，通过过滤可以查询数据
+    """
     queryset = StockBasic.objects.all()
     serializer_class = BasicSerializer
     filter_backends = [DjangoFilterBackend]
@@ -87,6 +90,9 @@ class BasicView(GenericViewSet,
 class TradeCalView(GenericViewSet,
                    mixins.ListModelMixin,
                    ):
+    """
+    输入日期（date）获取当天是否开盘，如果没有当天的数据，则插入当年的数据
+    """
     queryset = TradeCal.objects.all()
     serializer_class = TradeCalSerializer
 
@@ -158,6 +164,11 @@ def analyze_data(request):
 
 
 class StockListView(APIView):
+    """
+    分析传递过来的数据trade_date和ts_code，找到符合条件的最高，最低和平均买点
+    现在的策略是给出当前时间往前一年的数据中进行查询连续两个涨停之前的三个连续非涨停价
+    后续需要进行优化
+    """
 
     def post(self, request):
         data = request.data

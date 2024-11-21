@@ -1,5 +1,20 @@
 # stockApi
 
+## 程序流程
+
+### 获取股票基本信息
+
+
+### 获取股票的基本数据
+
+
+### 对获取的数据进行分析
+
+
+
+
+
+
 ### 安装必要的包
     - conda install pandas
     - pip install django-filter
@@ -10,6 +25,19 @@
     - 数据查询的日期start_date和end_dates(start_date为必须输入,如果只输入start_date则查询当天的数据）
 
 ### 修改了模型类trade_cal里面的字段类型
+
+
+### 添加股票基本数据
+    - 使用post请求发送数据 /api/basics/tushare/basic/
+
+### 获取股票全部基础数据，通过过滤可以查询数据
+    - /api/basics/basic/
+
+### 输入日期（date）获取当天是否开盘，如果没有当天的数据，则插入当年的数据
+    - exp: /api/basics/date_is_open/?2022-03-05
+
+### 分析传递过来的数据trade_date和ts_code，找到符合条件的最高，最低和平均买点
+    - /api/basics/get_stock_list/
 
 
 ### TODU：

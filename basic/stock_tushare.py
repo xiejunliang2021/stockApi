@@ -18,6 +18,7 @@ import logging
 import numpy as np
 from typing import List, Tuple, Dict
 from decimal import Decimal
+from django.db import transaction
 
 # 设置日志
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -501,45 +502,58 @@ def analyze_selected_stocks(selected_df: pd.DataFrame) -> pd.DataFrame:
 
 def insert_or_update_stock_strategy(ts_code, trade_date, highest_price, lowest_price, average_price, is_success):
     try:
-        # 查找现有记录
-        obj = StockStrategyCode.objects.filter(ts_code=ts_code, trade_date=trade_date).first()
-
-        if obj:
-            # 数据存在，检查是否完全一致
-            if (
-                    Decimal(obj.highest_price) == Decimal(highest_price) and
-                    Decimal(obj.lowest_price) == Decimal(lowest_price) and
-                    Decimal(obj.average_price) == Decimal(average_price) and
-                    obj.is_success == is_success
-            ):
-                # 数据完全一致，不执行更新
-                print("数据完全一致，跳过更新")
-                return obj, False
-            else:
-                # 数据不一致，更新记录
-                obj.highest_price = highest_price
-                obj.lowest_price = lowest_price
-                obj.average_price = average_price
-                obj.is_success = is_success
-                obj.save()
-                print("数据已更新")
-                return obj, True
+        # 外键处理：确保 ts_code 是 StockBasic 的实例或主键
+        if isinstance(ts_code, str):  # 如果是字符串主键
+            ts_code_instance = StockBasic.objects.get(ts_code=ts_code)
+        elif isinstance(ts_code, StockBasic):  # 如果是实例
+            ts_code_instance = ts_code
         else:
-            # 数据不存在，插入新记录
-            obj = StockStrategyCode.objects.create(
-                ts_code=ts_code,
-                trade_date=trade_date,
-                highest_price=highest_price,
-                lowest_price=lowest_price,
-                average_price=average_price,
-                is_success=is_success
-            )
-            print("新记录已插入")
-            return obj, True
+            raise ValueError("无效的 ts_code 参数，必须是字符串或 StockBasic 实例")
+
+        # 开始事务
+        with transaction.atomic():
+            # 尝试查找是否存在符合条件的记录
+            obj = StockStrategyCode.objects.filter(ts_code=ts_code_instance, trade_date=trade_date).first()
+
+            if obj:
+                # 检查是否完全一致
+                if (
+                        Decimal(obj.highest_price) == Decimal(highest_price) and
+                        Decimal(obj.lowest_price) == Decimal(lowest_price) and
+                        Decimal(obj.average_price) == Decimal(average_price) and
+                        obj.is_success == is_success
+                ):
+                    # 数据完全一致，直接返回
+                    print("数据完全一致，跳过更新")
+                    return obj, False
+                else:
+                    # 数据不一致，更新记录
+                    obj.highest_price = highest_price
+                    obj.lowest_price = lowest_price
+                    obj.average_price = average_price
+                    obj.is_success = is_success
+                    obj.save()
+                    print("数据已更新")
+                    return obj, True
+            else:
+                # 数据不存在，插入新记录
+                obj = StockStrategyCode.objects.create(
+                    ts_code=ts_code_instance,
+                    trade_date=trade_date,
+                    highest_price=highest_price,
+                    lowest_price=lowest_price,
+                    average_price=average_price,
+                    is_success=is_success
+                )
+                print("新记录已插入")
+                return obj, True
+
+    except StockBasic.DoesNotExist:
+        print(f"StockBasic 中未找到 ts_code={ts_code}")
+        return None, False
     except Exception as e:
         print(f"错误发生：{e}")
         return None, False
-
 
 def analyze_stock(ts_code, strategy_date):
     """

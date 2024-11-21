@@ -23,7 +23,6 @@ class StockBasic(models.Model):
         return self.name
 
 
-
 class TradeCal(models.Model):
     exchange = models.CharField(max_length=10, verbose_name='交易所')
     cal_date = models.DateField(verbose_name='日历日期')
