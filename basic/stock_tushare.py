@@ -517,12 +517,7 @@ def insert_or_update_stock_strategy(ts_code, trade_date, highest_price, lowest_p
 
             if obj:
                 # 检查是否完全一致
-                if (
-                        Decimal(obj.highest_price) == Decimal(highest_price) and
-                        Decimal(obj.lowest_price) == Decimal(lowest_price) and
-                        Decimal(obj.average_price) == Decimal(average_price) and
-                        obj.is_success == is_success
-                ):
+                if obj.is_success == is_success:
                     # 数据完全一致，直接返回
                     print("数据完全一致，跳过更新")
                     return obj, False
@@ -554,6 +549,7 @@ def insert_or_update_stock_strategy(ts_code, trade_date, highest_price, lowest_p
     except Exception as e:
         print(f"错误发生：{e}")
         return None, False
+
 
 def analyze_stock(ts_code, strategy_date):
     """
