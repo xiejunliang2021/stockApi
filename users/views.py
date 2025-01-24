@@ -10,11 +10,17 @@ from .models import User, Addr, TestStatic
 from .serializers import UserSerializer, AddrSerializer
 from rest_framework.permissions import IsAuthenticated
 from common.permissions import UserPermissions, AddrPermissions
+from django.views.decorators.csrf import csrf_exempt
 
 
 class LoginView(TokenObtainPairView):
     def post(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
+        # print(request.data)
+        if not serializer.is_valid():
+            # print(serializer.errors)  # 打印错误信息
+            # 返回标准的错误信息
+            return Response({"error": serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
         try:
             serializer.is_valid(raise_exception=True)
         except TokenError as e:

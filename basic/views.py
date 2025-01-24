@@ -1,12 +1,18 @@
 from rest_framework.decorators import api_view
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.viewsets import GenericViewSet
 from rest_framework import status, mixins
 from django_filters.rest_framework import DjangoFilterBackend
+from django.db import IntegrityError
+from common.permissions import UserPermissions
 from .serializers import BasicSerializer, TradeCalSerializer
 from .filters import StockBasicFilter
 from .stock_tushare import *
+# 下面的库已经安装，但是在读取的时候会报错，它的作用是Gemini
+import google.generativeai as genai
+from decouple import config
 
 # Register Tushare token once, rather than initializing in each request
 ts.set_token(ts_token)
@@ -85,6 +91,8 @@ class BasicView(GenericViewSet,
     serializer_class = BasicSerializer
     filter_backends = [DjangoFilterBackend]
     filterset_class = StockBasicFilter
+    # 权限认证(设置认证用户才能查看当前信息）
+    permission_classes = [IsAuthenticated, UserPermissions]
 
 
 class TradeCalView(GenericViewSet,
@@ -174,5 +182,67 @@ class StockListView(APIView):
         data = request.data
         trade_date = data.get("trade_date")
         ts_code = data.get("ts_code")
-        df = analyze_stock(ts_code, trade_date)
-        return Response({"trade_date": trade_date, "ts_code": ts_code, "message": df}, status=status.HTTP_200_OK)
+        ts_name = get_stock_name(ts_code)
+        # 先查询数据库中是否已经存在数据
+        try:
+            existing_record = StockStrategyCode.objects.get(ts_code=ts_code, trade_date=trade_date)
+            # 如果存在，返回数据库中的数据
+            response_data = {
+                "trade_date": trade_date,
+                "ts_code": ts_code,
+                "ts_name": ts_name,
+                "highest_price": str(existing_record.highest_price),
+                "lowest_price": str(existing_record.lowest_price),
+                "average_price": str(existing_record.average_price),
+                "message": "数据已存在，从数据库中获取"
+            }
+            return Response(response_data, status=status.HTTP_200_OK)
+
+        except StockStrategyCode.DoesNotExist:
+            # 如果没有记录，执行分析函数
+            df = analyze_stock(ts_code, trade_date)
+
+            # 返回分析结果
+            return Response({
+                "trade_date": trade_date,
+                "ts_code": ts_code,
+                "highest_price": df["highest_price"],
+                "lowest_price": df["lowest_price"],
+                "average_price": df["average_price"],
+                "message": "数据已更新"
+            }, status=status.HTTP_200_OK)
+
+
+@api_view(['POST'])
+def ask_gemini(request):
+    # 获取 API Key
+    # GOOGLE_API_KEY = config('gemini-api-key')  # 从 settings.py 中读取
+    # print(GOOGLE_API_KEY)
+    GOOGLE_API_KEY = 'AIzaSyBIn96AX6g7q2QmlSOYvdxqMeZGVTHO9E0'
+    # 确保 API Key 已设置
+    if not GOOGLE_API_KEY:
+        return Response({'error': 'Google API Key 未设置'}, status=500)
+
+    genai.configure(api_key=GOOGLE_API_KEY)
+
+    # 设置模型，这里使用 gemini-pro 模型
+    model = genai.GenerativeModel('gemini-pro')
+
+    # 获取前端发送的问题
+    question = request.data.get('question')
+
+    # 确保问题不为空
+    if not question:
+        return Response({'error': '问题不能为空'}, status=400)
+
+    # 调用 Gemini 模型
+    try:
+        response = model.generate_content(question)
+        answer = response.text
+        logger.info(f"Gemini answer: {answer}")  # 打印 Gemini 回答
+        print(f"Gemini answer: {answer}")  # 打印 Gemini 回答
+    except Exception as e:
+        return Response({'error': str(e)}, status=500)
+
+    # 返回答案
+    return Response({'answer': answer})

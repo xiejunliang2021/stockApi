@@ -7,4 +7,5 @@ venv/
 # 忽略 pycache 文件
 __pycache__/
 *.pyc
+.env
 

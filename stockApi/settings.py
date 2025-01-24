@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 from datetime import timedelta
 from pathlib import Path
+# 下面是没有完成的安装，以后记得安装，它的作用是从环境变量中读取数据
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -90,9 +92,9 @@ WSGI_APPLICATION = "stockApi.wsgi.application"
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'stock_api',
+        'NAME': config('DATABASE_NAME', default='default_db_name'),
         'USER': 'root',
-        'PASSWORD': '19861023Xjl_',
+        'PASSWORD': config('PASSWORD', ),
         'HOST': '168.138.5.55',
         'PORT': '3306',
         'OPTIONS': {
@@ -101,9 +103,21 @@ DATABASES = {
             'read_timeout': 60,
             'write_timeout': 60,
         },
+    },
+    'oracle_db': {
+        'ENGINE': 'django.db.backends.oracle',
+        'NAME': 'geb977e4f1273f7_mhuabenwuxin_high.adb.oraclecloud.com',
+        'USER': 'huabenwuxin_mlb',
+        'PASSWORD': '19881215Xjl_',
+        'HOST': 'adb.ap-melbourne-1.oraclecloud.com',
+        'PORT': '1522',
+        'OPTIONS': {
+            'ssl_server_dn_match': True,
+        }
     }
-}
 
+}
+#
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
 
@@ -144,7 +158,7 @@ STATIC_URL = "static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # 允许所有用户跨域访问
-CORS_ORIGIN_ALLOW_ALL = True
+CORS_ORIGIN_ALLOW_ALL = False
 # 允许的跨域来源
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",  # 你的前端地址
@@ -155,18 +169,23 @@ CORS_ALLOW_CREDENTIALS = True
 # 指定自定义的用户模型
 AUTH_USER_MODEL = 'users.User'
 
+CSRF_COOKIE_NAME = "csrftoken"
+
 # DRF配置鉴权方式
 REST_FRAMEWORK = {
     # 配置登录鉴权方式
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
-        'rest_framework.authentication.SessionAuthentication',
-        'rest_framework.authentication.BasicAuthentication',
+        # 'rest_framework.authentication.SessionAuthentication',
+        # 'rest_framework.authentication.BasicAuthentication',
     ),
     # 配置过滤器
     'DEFAULT_FILTER_BACKENDS': ('django_filters.rest_framework.DjangoFilterBackend',),
     # 接口文档的配置
     'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema',
+    # 配置分页
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10,  # 每页返回的数据条数
 }
 
 SIMPLE_JWT = {
@@ -235,3 +254,24 @@ AUTHENTICATION_BACKENDS = [
 
 PERMISSION_CHECK_AUTHENTICATION_BACKENDS = False
 PERMISSION_CHECK_TEMPLATES_OPTIONS_BUILTINS = False
+
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "handlers": {
+        "file": {
+            "level": "DEBUG",
+            "class": "logging.FileHandler",
+            "filename": BASE_DIR / "debug.log",
+        },
+    },
+    "loggers": {
+        "django": {
+            "handlers": ["file"],
+            "level": "DEBUG",
+            "propagate": True,
+        },
+    },
+}
+
+

@@ -376,6 +376,20 @@ def get_last_trade_dates(selected_df: pd.DataFrame) -> pd.DataFrame:
     return last_trade_dates
 
 
+def get_stock_name(ts_code):
+    """
+    根据 ts_code 查询股票名称
+    :param ts_code: 股票代码
+    :return: 股票名称 (str) 或 错误消息 (str)
+    """
+    try:
+        # 查询 StockBasic 表中对应的股票信息
+        stock = StockBasic.objects.get(ts_code=ts_code)
+        return stock.name
+    except StockBasic.DoesNotExist:
+        return f"Stock with ts_code {ts_code} does not exist."
+
+
 def filter_stocks_by_conditions(df: pd.DataFrame) -> pd.DataFrame:
     """
     筛选符合条件的股票数据：
@@ -648,87 +662,14 @@ def analyze_stock(ts_code, strategy_date):
     # 计算最高价、最低价和平均价
     highest_price = non_limit_days['high'].max()
     lowest_price = non_limit_days['low'].min()
-    average_price = non_limit_days['close'].mean()
-    trade_date = strategy_date
-    insert_or_update_stock_strategy(ts_code, trade_date, highest_price, lowest_price, average_price, is_success=False)
+    average_price = round(non_limit_days['close'].mean(), 2)
+
+    # 插入或更新策略结果
+    insert_or_update_stock_strategy(ts_code, strategy_date, highest_price, lowest_price, average_price,
+                                    is_success=False)
 
     return {
         "highest_price": highest_price,
         "lowest_price": lowest_price,
         "average_price": average_price
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -8,7 +8,7 @@
 '''
 
 from django.urls import path
-from .views import basic_list, BasicView, analyze_data, TradeCalView, StockListView
+from .views import basic_list, BasicView, analyze_data, TradeCalView, StockListView, ask_gemini
 
 urlpatterns = [
     # 登录
@@ -17,7 +17,8 @@ urlpatterns = [
     path('date_is_open/', TradeCalView.as_view({'get': 'list'})),
     # 测试，从前端获取数据，进行分析后返回给前端
     path('analyze/', analyze_data),
-    path('get_stock_list/', StockListView.as_view())
+    path('get_stock_list/', StockListView.as_view()),
+    path('ask-gemini/', ask_gemini, name='ask_gemini'),
 
 ]
 
