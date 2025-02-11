@@ -14,6 +14,8 @@ from pathlib import Path
 # 下面是没有完成的安装，以后记得安装，它的作用是从环境变量中读取数据
 from decouple import config
 import oracledb
+import os
+
 
 try:
     oracledb.init_oracle_client()
@@ -112,13 +114,13 @@ DATABASES = {
 #    },
     'default': {
         'ENGINE': 'django.db.backends.oracle',
-        'NAME': 'mhuabenwuxin_high',
-        'USER': 'huabenwuxin_mlb',
-        'PASSWORD': '19881215Xjl_',
+        'NAME': config('NAME_ORACLE',),
+        'USER': config('USER_ORACLE',),
+        'PASSWORD': config('PASSWORD_ORACLE',),
         'HOST': '',
         'PORT': '',
         'OPTIONS': {
-            'wallet_location': '/home/opc/oracle_wallet',
+            'wallet_location': config('WALLET_LOCATION',),
             'retry_count': 20,
             'retry_delay': 3,
             'ssl_server_dn_match': True
