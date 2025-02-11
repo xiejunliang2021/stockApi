@@ -7,12 +7,14 @@ from rest_framework import status, mixins
 from django_filters.rest_framework import DjangoFilterBackend
 from django.db import IntegrityError
 from common.permissions import UserPermissions
-from .serializers import BasicSerializer, TradeCalSerializer
+from .serializers import BasicSerializer, TradeCalSerializer, PolicyDetailsSerializer
 from .filters import StockBasicFilter
 from .stock_tushare import *
 # 下面的库已经安装，但是在读取的时候会报错，它的作用是Gemini
 import google.generativeai as genai
 from decouple import config
+from rest_framework import generics
+from .models import PolicyDetails
 
 # Register Tushare token once, rather than initializing in each request
 ts.set_token(ts_token)
@@ -211,6 +213,12 @@ class StockListView(APIView):
                 "average_price": df["average_price"],
                 "message": "数据已更新"
             }, status=status.HTTP_200_OK)
+
+
+class PolicyDetailsListCreateView(generics.ListCreateAPIView):
+    """股票策略详情"""
+    queryset = PolicyDetails.objects.all()
+    serializer_class = PolicyDetailsSerializer
 
 
 @api_view(['POST'])

@@ -8,7 +8,7 @@
 '''
 
 from django.urls import path
-from .views import basic_list, BasicView, analyze_data, TradeCalView, StockListView, ask_gemini
+from .views import basic_list, BasicView, analyze_data, TradeCalView, StockListView, ask_gemini, PolicyDetailsListCreateView
 
 urlpatterns = [
     # 登录
@@ -19,7 +19,7 @@ urlpatterns = [
     path('analyze/', analyze_data),
     path('get_stock_list/', StockListView.as_view()),
     path('ask-gemini/', ask_gemini, name='ask_gemini'),
-
+    path('policy-details/', PolicyDetailsListCreateView.as_view(), name='policy-details-list-create'),
 ]
 
 

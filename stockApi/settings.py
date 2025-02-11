@@ -13,6 +13,12 @@ from datetime import timedelta
 from pathlib import Path
 # 下面是没有完成的安装，以后记得安装，它的作用是从环境变量中读取数据
 from decouple import config
+import oracledb
+
+try:
+    oracledb.init_oracle_client()
+except Exception as e:
+    print(f"Oracle Client 初始化失败: {e}")
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -43,7 +49,7 @@ INSTALLED_APPS = [
     # 解决跨域问题
     "corsheaders",
     # 权限校验
-    'permission',
+    # 'permission',
     # 过滤器
     'django_filters',
     "basic",
@@ -90,33 +96,36 @@ WSGI_APPLICATION = "stockApi.wsgi.application"
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.mysql',
+#        'NAME': config('DATABASE_NAME', default='default_db_name'),
+#        'USER': config('USER_MYSQL',),
+#        'PASSWORD': config('PASSWORD_MYSQL', ),
+#        'HOST': config('HOST_MYSQL',),
+#        'PORT': config('PORT_MYSQL'),
+#        'OPTIONS': {
+#            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+#            'connect_timeout': 20,
+#            'read_timeout': 60,
+#            'write_timeout': 60,
+#        },
+#    },
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': config('DATABASE_NAME', default='default_db_name'),
-        'USER': 'root',
-        'PASSWORD': config('PASSWORD', ),
-        'HOST': '168.138.5.55',
-        'PORT': '3306',
-        'OPTIONS': {
-            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
-            'connect_timeout': 20,
-            'read_timeout': 60,
-            'write_timeout': 60,
-        },
-    },
-    'oracle_db': {
         'ENGINE': 'django.db.backends.oracle',
-        'NAME': 'geb977e4f1273f7_mhuabenwuxin_high.adb.oraclecloud.com',
+        'NAME': 'mhuabenwuxin_high',
         'USER': 'huabenwuxin_mlb',
         'PASSWORD': '19881215Xjl_',
-        'HOST': 'adb.ap-melbourne-1.oraclecloud.com',
-        'PORT': '1522',
+        'HOST': '',
+        'PORT': '',
         'OPTIONS': {
-            'ssl_server_dn_match': True,
-        }
+            'wallet_location': '/home/opc/oracle_wallet',
+            'retry_count': 20,
+            'retry_delay': 3,
+            'ssl_server_dn_match': True
+        },
     }
 
-}
+   }
 #
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
