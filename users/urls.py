@@ -1,11 +1,19 @@
 from django.contrib import admin
 from django.urls import path
-from .views import LoginView, RegistrView, UserView, AddrView, StaticView
-# from rest_framework_simplejwt.views import TokenRefreshView, TokenVerifyView
+from .views import (
+    LoginView, RegistrView, UserView, AddrView, StaticView,
+    LoginByKeyView, GenerateKeyView, BrowseRecordListView
+)
 
 urlpatterns = [
     # 登录
     path('login/', LoginView.as_view()),
+    # 用 key 登录
+    path('login_by_key/', LoginByKeyView.as_view()),
+    # 生成 key
+    path('generate_key/', GenerateKeyView.as_view()),
+    # 查看浏览记录
+    path('browse_records/', BrowseRecordListView.as_view()),
     # 注册
     path('register/', RegistrView.as_view()),
     # # 刷新token

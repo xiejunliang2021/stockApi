@@ -181,3 +181,87 @@ class StaticView(APIView):
         }
 
         return Response(res, status=status.HTTP_201_CREATED)
+
+
+import uuid
+from rest_framework_simplejwt.tokens import RefreshToken
+from .models import UserKey, BrowseRecord
+
+class LoginByKeyView(APIView):
+    def post(self, request):
+        key_str = request.data.get('key')
+        if not key_str:
+            return Response({'errors': 'Key不能为空'}, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
+        
+        try:
+            user_key = UserKey.objects.select_related('user').get(key=key_str)
+            user = user_key.user
+            if not user.is_active:
+                return Response({'errors': '该Key关联的用户已被禁用'}, status=status.HTTP_400_BAD_REQUEST)
+        except UserKey.DoesNotExist:
+            return Response({'errors': '无效的Key'}, status=status.HTTP_400_BAD_REQUEST)
+
+        # 手动生成 SimpleJWT token
+        refresh = RefreshToken.for_user(user)
+        res = {
+            'id': user.id,
+            'username': user.username,
+            'email': user.email,
+            'mobile': user.mobile,
+            'token': str(refresh.access_token),
+            'refresh': str(refresh),
+            'is_superuser': user.is_superuser
+        }
+        return Response(res, status=status.HTTP_200_OK)
+
+
+class GenerateKeyView(APIView):
+    permission_classes = [IsAuthenticated]
+    
+    def post(self, request):
+        if not request.user.is_superuser and not request.user.is_staff:
+            return Response({'errors': '权限不足，只有管理员可以生成Key'}, status=status.HTTP_403_FORBIDDEN)
+            
+        target_username = request.data.get('username')
+        if not target_username:
+            return Response({'errors': '目标用户名不能为空'}, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
+            
+        try:
+            target_user = User.objects.get(username=target_username)
+        except User.DoesNotExist:
+            return Response({'errors': '目标用户不存在'}, status=status.HTTP_400_BAD_REQUEST)
+            
+        new_key_str = str(uuid.uuid4()).replace('-', '')
+        
+        user_key, created = UserKey.objects.update_or_create(
+            user=target_user,
+            defaults={'key': new_key_str}
+        )
+        
+        return Response({
+            'username': target_user.username,
+            'key': new_key_str,
+            'created': not created
+        }, status=status.HTTP_200_OK)
+
+
+class BrowseRecordListView(APIView):
+    permission_classes = [IsAuthenticated]
+    
+    def get(self, request):
+        if not request.user.is_superuser and not request.user.is_staff:
+            return Response({'errors': '权限不足，只有管理员可以查看浏览记录'}, status=status.HTTP_403_FORBIDDEN)
+            
+        records = BrowseRecord.objects.select_related('user').all()[:500]
+        res_list = []
+        for r in records:
+            res_list.append({
+                'id': r.id,
+                'username': r.user.username if r.user else 'Anonymous',
+                'path': r.path,
+                'method': r.method,
+                'ip': r.ip,
+                'user_agent': r.user_agent,
+                'created_at': r.created_at.strftime('%Y-%m-%d %H:%M:%S')
+            })
+        return Response(res_list, status=status.HTTP_200_OK)

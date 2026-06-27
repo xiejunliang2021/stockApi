@@ -72,3 +72,27 @@ class TestStatic(models.Model):
         verbose_name = '股票策略测试表'
 
 
+class UserKey(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='key_info')
+    key = models.CharField(verbose_name='密钥', max_length=64, unique=True)
+    created_at = models.DateTimeField(verbose_name='创建时间', auto_now_add=True)
+
+    class Meta:
+        db_table = 'user_keys'
+        verbose_name = '用户密钥表'
+
+
+class BrowseRecord(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='browse_records', null=True, blank=True)
+    path = models.CharField(verbose_name='浏览路径', max_length=255)
+    method = models.CharField(verbose_name='请求方式', max_length=10)
+    ip = models.CharField(verbose_name='IP地址', max_length=50, default='')
+    user_agent = models.TextField(verbose_name='浏览器UA', default='')
+    created_at = models.DateTimeField(verbose_name='浏览时间', auto_now_add=True)
+
+    class Meta:
+        db_table = 'browse_records'
+        verbose_name = '浏览记录表'
+        ordering = ['-created_at']
+
+
